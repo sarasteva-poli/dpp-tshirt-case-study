@@ -1,1059 +1,329 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Digital Product Passport — Medium Fit T-Shirt (Case Study)</title>
+<title>Digital Product Passport — T-Shirt</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --bg: #faf8f3;
-    --surface: #ffffff;
-    --ink: #1a1a1a;
-    --ink-soft: #4a4a4a;
-    --ink-faint: #8a8783;
-    --line: #e6e2d8;
-    --line-soft: #f0ece2;
-    --accent: #1f4e5f;
-    --accent-soft: #e8eef0;
-    --warn: #b45f1f;
-    --warn-soft: #fbeee2;
-    --na: #9a9892;
-    --na-soft: #efece4;
-    --plm: #3b5b8a;
-    --vtp: #6b3f8a;
-    --axoria: #1f6b4f;
-    --reusant: #8a5a1f;
-    --scheda: #6b6b3f;
-    --other: #555;
-    --shadow: 0 1px 2px rgba(20, 20, 20, 0.04), 0 8px 24px rgba(20, 20, 20, 0.04);
+  :root{
+    --cream:#FBF7F2;
+    --beige:#F2E7DC;
+    --beige-deep:#E8D9C9;
+    --rose:#D9A7A7;
+    --rose-deep:#C68B8B;
+    --rose-soft:#F0D9D6;
+    --mauve:#6E5450;
+    --ink:#3E2E2A;
+    --muted:#977E78;
+    --line:#E6D6C8;
+    --gold:#B89B6E;
+    --white:#FFFFFF;
   }
-  * { box-sizing: border-box; }
-  html, body {
-    margin: 0; padding: 0;
-    background: var(--bg);
-    color: var(--ink);
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
-    font-size: 15px;
-    line-height: 1.55;
-    -webkit-font-smoothing: antialiased;
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{
+    font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+    background:var(--cream);
+    color:var(--ink);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
   }
-  h1, h2, h3 {
-    font-family: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
-    font-weight: 600;
-    letter-spacing: -0.01em;
-  }
-  a { color: var(--accent); }
+  .wrap{max-width:860px;margin:0 auto;padding:0 20px}
 
-  /* ------- HEADER ------- */
-  header.page {
-    background: var(--ink);
-    color: #f5f3ee;
-    padding: 28px 0 24px;
-    border-bottom: 1px solid #000;
+  /* Top bar */
+  .topbar{
+    background:linear-gradient(135deg,var(--rose-soft) 0%,var(--beige) 100%);
+    border-bottom:1px solid var(--line);
+    padding:18px 0;
   }
-  .wrap {
-    max-width: 1080px;
-    margin: 0 auto;
-    padding: 0 24px;
+  .topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px}
+  .brand-logo{
+    font-family:'Cormorant Garamond',serif;
+    font-size:24px;font-weight:600;letter-spacing:2px;
+    color:var(--mauve);text-transform:uppercase;
   }
-  .eyebrow {
-    text-transform: uppercase;
-    letter-spacing: 0.14em;
-    font-size: 11px;
-    color: #c8c2b3;
-    margin-bottom: 8px;
+  .passport-tag{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:11px;letter-spacing:1.5px;text-transform:uppercase;
+    color:var(--mauve);background:rgba(255,255,255,.55);
+    padding:7px 14px;border-radius:30px;border:1px solid rgba(198,139,139,.35);
+    font-weight:500;
   }
-  header.page h1 {
-    margin: 0 0 14px;
-    font-size: 30px;
-    line-height: 1.15;
-    color: #faf8f3;
-  }
-  .id-row {
-    display: flex; flex-wrap: wrap; gap: 18px 28px;
-    font-size: 13px; color: #c8c2b3;
-  }
-  .id-row b { color: #f5f3ee; font-weight: 600; }
+  .dot{width:7px;height:7px;border-radius:50%;background:var(--rose-deep)}
 
-  /* ------- HERO / META ------- */
-  .hero {
-    background: var(--surface);
-    border-bottom: 1px solid var(--line);
-    padding: 22px 0;
+  /* Hero */
+  .hero{padding:46px 0 30px;text-align:center}
+  .hero-images{
+    display:flex;justify-content:center;gap:28px;flex-wrap:wrap;margin-bottom:34px;
   }
-  .hero-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 18px;
+  .shirt-card{
+    background:var(--white);
+    border:1px solid var(--line);
+    border-radius:18px;
+    padding:22px 18px 14px;
+    width:230px;
+    box-shadow:0 8px 30px rgba(110,84,80,.07);
+    transition:transform .35s ease, box-shadow .35s ease;
   }
-  .meta-card {
-    border: 1px solid var(--line);
-    border-radius: 8px;
-    padding: 14px 16px;
-    background: #fdfcf8;
+  .shirt-card:hover{transform:translateY(-5px);box-shadow:0 16px 40px rgba(110,84,80,.14)}
+  .shirt-card img{width:100%;height:auto;display:block;border-radius:8px}
+  .shirt-card .view-label{
+    margin-top:12px;font-size:11px;letter-spacing:2px;text-transform:uppercase;
+    color:var(--muted);font-weight:500;
   }
-  .meta-card .k {
-    font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em;
-    color: var(--ink-faint); margin-bottom: 4px;
+  .product-category{
+    font-size:12px;letter-spacing:3px;text-transform:uppercase;
+    color:var(--rose-deep);font-weight:500;margin-bottom:10px;
   }
-  .meta-card .v {
-    font-size: 15px; color: var(--ink); font-weight: 600;
+  .product-title{
+    font-family:'Cormorant Garamond',serif;
+    font-size:42px;font-weight:600;color:var(--ink);line-height:1.15;
   }
-  .completeness {
-    grid-column: span 4;
-    background: var(--accent-soft);
-    border-color: #cfd9dc;
+  .product-sub{color:var(--muted);font-size:15px;margin-top:8px}
+  .verified{
+    display:inline-flex;align-items:center;gap:9px;margin-top:22px;
+    background:var(--white);border:1px solid var(--line);
+    padding:9px 18px;border-radius:30px;font-size:13px;color:var(--mauve);
+    box-shadow:0 4px 14px rgba(110,84,80,.06);
   }
-  .bar {
-    height: 8px; background: #d4dcde; border-radius: 4px; margin-top: 8px; overflow: hidden;
-  }
-  .bar > span {
-    display: block; height: 100%; background: var(--accent);
-  }
-  .completeness .note { font-size: 12px; color: var(--ink-soft); margin-top: 8px; font-weight: 400; }
+  .verified svg{width:16px;height:16px}
 
-  /* ------- NAV ------- */
-  nav.toc {
-    position: sticky; top: 0; z-index: 30;
-    background: rgba(250, 248, 243, 0.95);
-    backdrop-filter: blur(8px);
-    border-bottom: 1px solid var(--line);
-    padding: 10px 0;
+  /* Accordion */
+  .sections{padding:14px 0 60px}
+  .acc{
+    background:var(--white);
+    border:1px solid var(--line);
+    border-radius:16px;
+    margin-bottom:14px;
+    overflow:hidden;
+    box-shadow:0 4px 18px rgba(110,84,80,.04);
   }
-  .toc-inner {
-    display: flex; flex-wrap: wrap; gap: 6px;
-    max-width: 1080px; margin: 0 auto; padding: 0 24px;
+  .acc-head{
+    display:flex;align-items:center;gap:16px;
+    padding:20px 24px;cursor:pointer;user-select:none;
+    transition:background .25s ease;
   }
-  .toc a {
-    text-decoration: none; color: var(--ink-soft);
-    font-size: 12.5px; padding: 6px 10px; border-radius: 6px;
-    border: 1px solid transparent;
+  .acc-head:hover{background:var(--cream)}
+  .acc-icon{
+    flex-shrink:0;width:40px;height:40px;border-radius:11px;
+    background:linear-gradient(135deg,var(--rose-soft),var(--beige));
+    display:flex;align-items:center;justify-content:center;color:var(--rose-deep);
   }
-  .toc a:hover { background: var(--surface); border-color: var(--line); color: var(--ink); }
+  .acc-icon svg{width:20px;height:20px}
+  .acc-title{
+    flex:1;font-family:'Cormorant Garamond',serif;
+    font-size:22px;font-weight:600;color:var(--ink);
+  }
+  .acc-arrow{
+    flex-shrink:0;width:22px;height:22px;color:var(--muted);
+    transition:transform .35s ease;
+  }
+  .acc.open .acc-arrow{transform:rotate(180deg)}
+  .acc-body{
+    max-height:0;overflow:hidden;
+    transition:max-height .4s ease;
+  }
+  .acc-inner{padding:4px 24px 24px}
+  .data-grid{
+    display:grid;grid-template-columns:1fr;gap:0;
+    border-top:1px solid var(--line);
+  }
+  .data-row{
+    display:flex;justify-content:space-between;gap:20px;
+    padding:13px 0;border-bottom:1px solid var(--line);
+  }
+  .data-row:last-child{border-bottom:none}
+  .data-key{color:var(--muted);font-size:14px;font-weight:400;flex-shrink:0;max-width:48%}
+  .data-val{
+    color:var(--ink);font-size:14px;font-weight:500;text-align:right;
+  }
+  .data-val.na{color:var(--muted);font-style:italic;font-weight:400}
 
-  /* ------- SECTIONS ------- */
-  main { padding: 28px 0 80px; }
-  section.domain {
-    background: var(--surface);
-    border: 1px solid var(--line);
-    border-radius: 10px;
-    margin-bottom: 16px;
-    box-shadow: var(--shadow);
-    overflow: hidden;
+  /* Footer */
+  footer{
+    background:linear-gradient(135deg,var(--beige) 0%,var(--rose-soft) 100%);
+    border-top:1px solid var(--line);padding:34px 0;text-align:center;
   }
-  .domain > header {
-    display: flex; align-items: center; justify-content: space-between;
-    gap: 16px;
-    padding: 18px 22px;
-    cursor: pointer;
-    user-select: none;
-    border-bottom: 1px solid transparent;
-    transition: background 120ms;
-  }
-  .domain.open > header {
-    background: #fdfcf8;
-    border-bottom-color: var(--line);
-  }
-  .domain > header:hover { background: #fbf9f2; }
-  .domain h2 {
-    margin: 0; font-size: 19px; color: var(--ink);
-    display: flex; align-items: center; gap: 12px;
-  }
-  .domain h2 .num {
-    font-family: -apple-system, sans-serif;
-    font-size: 11px;
-    background: var(--line);
-    color: var(--ink-soft);
-    padding: 3px 7px; border-radius: 999px; font-weight: 600;
-    letter-spacing: 0.05em;
-  }
-  .h-right { display: flex; align-items: center; gap: 12px; }
-  .chev {
-    width: 12px; height: 12px;
-    border-right: 2px solid var(--ink-soft);
-    border-bottom: 2px solid var(--ink-soft);
-    transform: rotate(45deg);
-    transition: transform 180ms;
-  }
-  .domain.open .chev { transform: rotate(-135deg); }
+  footer .wrap{display:flex;flex-direction:column;gap:8px;align-items:center}
+  .foot-id{font-size:12px;letter-spacing:1px;color:var(--mauve);font-weight:500}
+  .foot-note{font-size:12px;color:var(--muted);max-width:520px}
 
-  .domain .body {
-    display: none;
-    padding: 16px 22px 22px;
-  }
-  .domain.open .body { display: block; }
-
-  /* ------- DATA ROWS ------- */
-  table.data {
-    width: 100%; border-collapse: collapse;
-    font-size: 14px;
-  }
-  table.data th, table.data td {
-    text-align: left; padding: 11px 10px;
-    border-bottom: 1px solid var(--line-soft);
-    vertical-align: top;
-  }
-  table.data th {
-    font-weight: 500; color: var(--ink-soft);
-    width: 32%;
-    font-size: 13px;
-  }
-  table.data td.value { color: var(--ink); }
-  table.data td.value.na { color: var(--na); font-style: italic; }
-  table.data td.src { width: 1%; white-space: nowrap; }
-
-  .sub {
-    color: var(--ink-faint); font-size: 12.5px; margin-top: 3px;
-    line-height: 1.45;
-  }
-  .nested {
-    margin: 4px 0 0; padding-left: 16px;
-    font-size: 13px; color: var(--ink-soft);
-  }
-  .nested li { margin: 2px 0; }
-
-  /* ------- BADGES ------- */
-  .badge {
-    display: inline-block;
-    font-size: 10.5px;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    padding: 3px 8px;
-    border-radius: 999px;
-    font-weight: 600;
-    white-space: nowrap;
-  }
-  .b-plm    { background: #e7edf6; color: var(--plm); }
-  .b-vtp    { background: #efe7f6; color: var(--vtp); }
-  .b-axoria { background: #e1f0e9; color: var(--axoria); }
-  .b-reusant{ background: #f6ece1; color: var(--reusant); }
-  .b-scheda { background: #efeede; color: var(--scheda); }
-  .b-other  { background: #ececec; color: var(--other); }
-
-  .status {
-    font-size: 11px; padding: 3px 8px; border-radius: 4px;
-    text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600;
-  }
-  .st-full     { background: #e1f0e9; color: var(--axoria); }
-  .st-partial  { background: var(--warn-soft); color: var(--warn); }
-  .st-missing  { background: var(--na-soft); color: var(--na); }
-
-  /* ------- BOM TABLE ------- */
-  .bom {
-    overflow-x: auto;
-    margin-top: 6px;
-    border: 1px solid var(--line);
-    border-radius: 8px;
-  }
-  table.bom-table {
-    width: 100%; border-collapse: collapse; font-size: 13px;
-    min-width: 640px;
-  }
-  table.bom-table th, table.bom-table td {
-    padding: 9px 12px; text-align: left; border-bottom: 1px solid var(--line-soft);
-    vertical-align: top;
-  }
-  table.bom-table th {
-    background: #fdfcf8; font-weight: 600; color: var(--ink-soft);
-    font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em;
-  }
-  table.bom-table tr:last-child td { border-bottom: none; }
-  .role-tag {
-    display: inline-block; font-size: 11px; padding: 2px 7px; border-radius: 4px;
-    background: var(--line); color: var(--ink-soft); margin-left: 6px;
-  }
-
-  /* ------- SUPPLY CHAIN TIERS ------- */
-  .tiers {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
-    margin-top: 10px;
-  }
-  .tier {
-    border: 1px solid var(--line);
-    border-radius: 8px;
-    padding: 12px 14px;
-    background: #fdfcf8;
-    position: relative;
-  }
-  .tier .tier-label {
-    font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em;
-    color: var(--ink-faint); font-weight: 600;
-  }
-  .tier .tier-name { font-weight: 600; margin-top: 4px; font-size: 14.5px; }
-  .tier .tier-loc { font-size: 12.5px; color: var(--ink-soft); margin-top: 3px; }
-  .tier .tier-act { font-size: 12px; color: var(--ink-faint); margin-top: 6px; font-style: italic; }
-  .tiers::after {
-    content: ""; position: absolute;
-  }
-
-  /* ------- CALLOUTS ------- */
-  .note-box {
-    margin-top: 14px;
-    background: var(--warn-soft);
-    border-left: 3px solid var(--warn);
-    padding: 10px 14px;
-    font-size: 13px;
-    color: var(--ink-soft);
-    border-radius: 4px;
-  }
-  .note-box b { color: var(--warn); }
-  .info-box {
-    margin-top: 14px;
-    background: var(--accent-soft);
-    border-left: 3px solid var(--accent);
-    padding: 10px 14px;
-    font-size: 13px;
-    color: var(--ink-soft);
-    border-radius: 4px;
-  }
-  .info-box b { color: var(--accent); }
-
-  /* ------- LEGEND ------- */
-  .legend {
-    background: #fdfcf8;
-    border: 1px solid var(--line);
-    border-radius: 10px;
-    padding: 14px 18px;
-    margin-bottom: 18px;
-    font-size: 13px;
-  }
-  .legend h3 {
-    margin: 0 0 8px; font-size: 13px; text-transform: uppercase;
-    letter-spacing: 0.08em; color: var(--ink-soft);
-  }
-  .legend-items { display: flex; flex-wrap: wrap; gap: 14px 22px; }
-  .legend-items > div { display: flex; align-items: center; gap: 8px; font-size: 12.5px; color: var(--ink-soft); }
-
-  /* ------- FOOTER ------- */
-  footer.page {
-    border-top: 1px solid var(--line);
-    background: var(--surface);
-    padding: 22px 0;
-    font-size: 12.5px;
-    color: var(--ink-faint);
-  }
-  footer.page .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
-
-  /* ------- CONTROLS ------- */
-  .controls {
-    display: flex; gap: 8px; margin-bottom: 14px;
-  }
-  .controls button {
-    background: var(--surface);
-    border: 1px solid var(--line);
-    color: var(--ink-soft);
-    padding: 7px 12px;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 12.5px;
-    font-family: inherit;
-  }
-  .controls button:hover { background: #fbf9f2; color: var(--ink); }
-
-  /* ------- RESPONSIVE ------- */
-  @media (max-width: 720px) {
-    .hero-grid { grid-template-columns: 1fr 1fr; }
-    .completeness { grid-column: span 2; }
-    .tiers { grid-template-columns: 1fr 1fr; }
-    table.data th { width: 40%; }
-    header.page h1 { font-size: 24px; }
-    .domain h2 { font-size: 16px; }
-  }
-  @media (max-width: 460px) {
-    .hero-grid { grid-template-columns: 1fr; }
-    .completeness { grid-column: span 1; }
-    .tiers { grid-template-columns: 1fr; }
-    table.data, table.data tbody, table.data tr, table.data td, table.data th { display: block; width: 100%; }
-    table.data th { padding-bottom: 0; border-bottom: none; }
-    table.data td.src { padding-top: 0; }
-  }
-
-  /* ------- PRINT ------- */
-  @media print {
-    nav.toc, .controls, footer.page { display: none; }
-    .domain .body { display: block !important; }
-    .domain { break-inside: avoid; box-shadow: none; }
-    body { background: white; }
+  @media(max-width:560px){
+    .product-title{font-size:32px}
+    .shirt-card{width:44%;min-width:140px;padding:14px 12px 10px}
+    .hero-images{gap:14px}
+    .data-row{flex-direction:column;gap:3px}
+    .data-val{text-align:left}
+    .data-key{max-width:100%}
+    .acc-title{font-size:19px}
   }
 </style>
-</head>
-<body>
 
-<header class="page">
+<div class="topbar">
   <div class="wrap">
-    <div class="eyebrow">Digital Product Passport · Case Study</div>
-    <h1>Men's Medium Fit T-Shirt — Beta Back Paint</h1>
-    <div class="id-row">
-      <div><b>EAN (DPP key):</b> 4666620689653</div>
-      <div><b>Article:</b> 654321UVZ879374</div>
-      <div><b>SKU:</b> 813986202</div>
-      <div><b>Brand:</b> [Anonymised, real case]</div>
-    </div>
+    <div class="brand-logo">Beta</div>
+    <span class="passport-tag"><span class="dot"></span>Digital Product Passport</span>
   </div>
-</header>
+</div>
 
-<section class="hero">
+<div class="hero">
   <div class="wrap">
-    <div class="hero-grid">
-      <div class="meta-card">
-        <div class="k">Sector</div>
-        <div class="v">RTW — Textile / Apparel</div>
+    <div class="hero-images">
+      <div class="shirt-card">
+        <!-- Replace this SVG with a real front photo: <img src="front.jpg" alt="Front view"> -->
+        <svg viewBox="0 0 200 230" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="T-shirt front view">
+          <defs>
+            <linearGradient id="fg" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#F4EDE6"/>
+            </linearGradient>
+          </defs>
+          <path d="M70 18 L55 28 L18 55 L34 86 L52 76 L52 210 Q52 218 60 218 L140 218 Q148 218 148 210 L148 76 L166 86 L182 55 L145 28 L130 18 Q115 40 100 40 Q85 40 70 18 Z"
+                fill="url(#fg)" stroke="#D9A7A7" stroke-width="2"/>
+          <path d="M70 18 Q85 40 100 40 Q115 40 130 18" fill="none" stroke="#D9A7A7" stroke-width="2"/>
+          <path d="M75 26 Q100 46 125 26" fill="none" stroke="#E8D9C9" stroke-width="1.5"/>
+        </svg>
+        <div class="view-label">Front</div>
       </div>
-      <div class="meta-card">
-        <div class="k">Manufactured in</div>
-        <div class="v">Portugal</div>
-      </div>
-      <div class="meta-card">
-        <div class="k">Manufacturing Date</div>
-        <div class="v">05 Dec 2025</div>
-      </div>
-      <div class="meta-card">
-        <div class="k">Main Material</div>
-        <div class="v">Organic GOTS Cotton</div>
-      </div>
-      <div class="meta-card completeness">
-        <div class="k">DPP Data Completeness (case-study finding)</div>
-        <div class="v"><span id="comp-pct">—</span> of expected DPP fields populated at brand level</div>
-        <div class="bar"><span id="comp-bar"></span></div>
-        <div class="note">Unpopulated fields are not omitted: they are shown as <i>Data not available</i> to make the actual information coverage of the brand's current systems visible. This is itself a finding of the case study.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<nav class="toc">
-  <div class="toc-inner">
-    <a href="#d1">Identification</a>
-    <a href="#d2">Manufacturing</a>
-    <a href="#d3">Supply Chain</a>
-    <a href="#d4">Composition / BOM</a>
-    <a href="#d5">Environmental</a>
-    <a href="#d6">Social</a>
-    <a href="#d7">Performance</a>
-    <a href="#d8">Circularity / EoL</a>
-    <a href="#d9">Aftersales</a>
-    <a href="#d10">Regulation</a>
-  </div>
-</nav>
-
-<main>
-  <div class="wrap">
-
-    <div class="legend">
-      <h3>Source platform legend</h3>
-      <div class="legend-items">
-        <div><span class="badge b-plm">PLM</span> Product Lifecycle Management</div>
-        <div><span class="badge b-vtp">VTP</span> Vendor/Traceability Platform</div>
-        <div><span class="badge b-scheda">Tech sheet</span> Internal technical sheet</div>
-        <div><span class="badge b-axoria">Audit</span> Third-party social audit (Axoria)</div>
-        <div><span class="badge b-reusant">Reusant</span> End-of-life service platform</div>
-        <div><span class="badge b-other">Other</span> Customer-level / mixed sources</div>
+      <div class="shirt-card">
+        <!-- Replace this SVG with a real back photo: <img src="back.jpg" alt="Back view"> -->
+        <svg viewBox="0 0 200 230" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="T-shirt back view">
+          <defs>
+            <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#F4EDE6"/>
+            </linearGradient>
+          </defs>
+          <path d="M70 18 L55 28 L18 55 L34 86 L52 76 L52 210 Q52 218 60 218 L140 218 Q148 218 148 210 L148 76 L166 86 L182 55 L145 28 L130 18 Q115 30 100 30 Q85 30 70 18 Z"
+                fill="url(#bg)" stroke="#D9A7A7" stroke-width="2"/>
+          <path d="M70 18 Q85 30 100 30 Q115 30 130 18" fill="none" stroke="#D9A7A7" stroke-width="2"/>
+          <rect x="86" y="34" width="28" height="16" rx="3" fill="none" stroke="#E8D9C9" stroke-width="1.5"/>
+        </svg>
+        <div class="view-label">Back</div>
       </div>
     </div>
 
-    <div class="controls">
-      <button onclick="setAll(true)">Expand all</button>
-      <button onclick="setAll(false)">Collapse all</button>
+    <div class="product-category">Apparel · T-Shirt</div>
+    <h1 class="product-title">Men's Basic White T-Shirt</h1>
+    <p class="product-sub">Product Reference: PRD-TSH-0001</p>
+
+    <div class="verified">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#C68B8B" stroke-width="2"><path d="M9 12l2 2 4-4M21 12a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Verified Digital Product Passport
     </div>
-
-    <!-- ============ 1. PRODUCT IDENTIFICATION ============ -->
-    <section class="domain open" id="d1">
-      <header onclick="toggle(this)">
-        <h2><span class="num">01</span> Product Identification</h2>
-        <div class="h-right"><span class="status st-full">Complete</span><span class="chev"></span></div>
-      </header>
-      <div class="body">
-        <table class="data">
-          <tr>
-            <th>Product Name</th>
-            <td class="value">Medium Fit T-Shirt</td>
-            <td class="src"><span class="badge b-plm">PLM</span></td>
-          </tr>
-          <tr>
-            <th>Product Family</th>
-            <td class="value">
-              Department: Men's Jersey<br>
-              Subdepartment: Tops<br>
-              Class: Crew Short Sleeves<br>
-              Subclass: Casual
-              <div class="sub">Sector classification: RTW (Textile/Apparel). Primary key between PLM and Tech sheet: <code>modello-parte (654321UVZ87)</code>.</div>
-            </td>
-            <td class="src"><span class="badge b-plm">PLM</span></td>
-          </tr>
-          <tr>
-            <th>Product Identifier</th>
-            <td class="value">
-              EAN: <b>4666620689653</b> <span class="role-tag">DPP key</span><br>
-              Article Number: 654321UVZ879374<br>
-              SKU: 813986202
-            </td>
-            <td class="src"><span class="badge b-plm">PLM</span></td>
-          </tr>
-          <tr>
-            <th>Product Weight</th>
-            <td class="value">0.300 kg</td>
-            <td class="src"><span class="badge b-plm">PLM</span></td>
-          </tr>
-          <tr>
-            <th>Product Dimensions</th>
-            <td class="value">
-              76 cm × (59 + 25.5 × 2) cm
-              <div class="sub">Reference size: S. Source: prototype / technical sketch.</div>
-            </td>
-            <td class="src"><span class="badge b-scheda">Sketch</span></td>
-          </tr>
-          <tr>
-            <th>Product Colour</th>
-            <td class="value">
-              Faded Washed Black / W
-              <div class="sub">Colour code: 9374</div>
-            </td>
-            <td class="src"><span class="badge b-scheda">Tech sheet</span></td>
-          </tr>
-        </table>
-      </div>
-    </section>
-
-    <!-- ============ 2. MANUFACTURING ============ -->
-    <section class="domain" id="d2">
-      <header onclick="toggle(this)">
-        <h2><span class="num">02</span> Manufacturing Information</h2>
-        <div class="h-right"><span class="status st-full">Complete</span><span class="chev"></span></div>
-      </header>
-      <div class="body">
-        <table class="data">
-          <tr>
-            <th>Manufacturer Name (Tier 1)</th>
-            <td class="value">CO Textil S.A.</td>
-            <td class="src"><span class="badge b-vtp">VTP</span></td>
-          </tr>
-          <tr>
-            <th>Manufacturing Location</th>
-            <td class="value">Portugal</td>
-            <td class="src"><span class="badge b-vtp">VTP</span></td>
-          </tr>
-          <tr>
-            <th>Manufacturing Processes</th>
-            <td class="value">Finished-product manufacturing (sewing & assembly)</td>
-            <td class="src"><span class="badge b-vtp">VTP</span></td>
-          </tr>
-          <tr>
-            <th>Manufacturing Date</th>
-            <td class="value">05 December 2025</td>
-            <td class="src"><span class="badge b-vtp">VTP</span></td>
-          </tr>
-          <tr>
-            <th>Unique Operator Identifier</th>
-            <td class="value">
-              577037746
-              <div class="sub">DUNS Number</div>
-            </td>
-            <td class="src"><span class="badge b-vtp">VTP</span></td>
-          </tr>
-          <tr>
-            <th>Unique Facility Identifier</th>
-            <td class="value">
-              A244ZW24
-              <div class="sub">ZCHC ID</div>
-            </td>
-            <td class="src"><span class="badge b-vtp">VTP</span></td>
-          </tr>
-          <tr>
-            <th>Order ID</th>
-            <td class="value">
-              561257
-              <div class="sub">Cross-platform key: identifies the supplier CO Textil S.A. on the technical sheet and matches the first <i>Order ID</i> field of the related purchase order in VTP.</div>
-            </td>
-            <td class="src"><span class="badge b-other">VTP + Tech sheet</span></td>
-          </tr>
-        </table>
-      </div>
-    </section>
-
-    <!-- ============ 3. SUPPLY CHAIN ============ -->
-    <section class="domain" id="d3">
-      <header onclick="toggle(this)">
-        <h2><span class="num">03</span> Supply Chain &amp; Traceability</h2>
-        <div class="h-right"><span class="status st-partial">Partial</span><span class="chev"></span></div>
-      </header>
-      <div class="body">
-        <p style="margin:0 0 6px;color:var(--ink-soft);font-size:13.5px">Multi-tier traceability is reconstructed from the Vendor/Traceability Platform (VTP).</p>
-
-        <div class="tiers">
-          <div class="tier">
-            <div class="tier-label">Tier 1 · Finished product</div>
-            <div class="tier-name">CO Textil S.A.</div>
-            <div class="tier-loc">📍 Portugal</div>
-            <div class="tier-act">Manufacturing</div>
-          </div>
-          <div class="tier">
-            <div class="tier-label">Tier 2 · Fabric mill</div>
-            <div class="tier-name">M&amp;A S.A.</div>
-            <div class="tier-loc">📍 Portugal</div>
-            <div class="tier-act">Knitting · Dyeing</div>
-          </div>
-          <div class="tier">
-            <div class="tier-label">Tier 3 · Spinner</div>
-            <div class="tier-name">Fios</div>
-            <div class="tier-loc">📍 Portugal</div>
-            <div class="tier-act">Yarn production</div>
-          </div>
-          <div class="tier">
-            <div class="tier-label">Raw materials</div>
-            <div class="tier-name">Organic GOTS Cotton</div>
-            <div class="tier-loc">📍 Türkiye</div>
-            <div class="tier-act">Main fabric input</div>
-          </div>
-        </div>
-
-        <table class="data" style="margin-top:18px">
-          <tr>
-            <th>Forward tracking<div class="sub">(within tiers, and from consolidation centre / warehouse to stores)</div></th>
-            <td class="value">
-              Downstream-of-finished-product tracking via <b>Supply Chain Cockpit</b>.
-              <div class="sub">Inter-tier tracking (upstream): information not directly available; approximated through volumetric multipliers.</div>
-            </td>
-            <td class="src"><span class="badge b-vtp">VTP</span></td>
-          </tr>
-          <tr>
-            <th>Backward tracking<div class="sub">(aftersales: stores → legal entity → outlets / second-hand)</div></th>
-            <td class="value">Downstream-of-finished-product tracking via <b>Supply Chain Cockpit</b>.</td>
-            <td class="src"><span class="badge b-vtp">VTP</span></td>
-          </tr>
-        </table>
-
-        <div class="note-box">
-          <b>Gap noted in case study:</b> inter-tier physical tracking (Tier 3 → Tier 2 → Tier 1) is not natively captured in the current platform stack. Linkages are inferred through bill-of-materials multipliers rather than recorded transactions, which limits batch-level traceability claims.
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ 4. PRODUCT COMPOSITION / BOM ============ -->
-    <section class="domain" id="d4">
-      <header onclick="toggle(this)">
-        <h2><span class="num">04</span> Product Composition · Bill of Materials</h2>
-        <div class="h-right"><span class="status st-full">Complete</span><span class="chev"></span></div>
-      </header>
-      <div class="body">
-        <div class="bom">
-          <table class="bom-table">
-            <thead>
-              <tr>
-                <th>Component</th>
-                <th>Role</th>
-                <th>Code / Reference</th>
-                <th>Composition</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><b>Fabric 1</b></td>
-                <td>Main material</td>
-                <td>00005DUVZ87 — BET BACK PAINT DRY JERSEY — JEN047516501</td>
-                <td>99% CO cotton, 1% EA elastane (R)<br>100% PL polyester (R)<br>100% CO cotton (T)</td>
-              </tr>
-              <tr>
-                <td><b>Fabric 2</b></td>
-                <td>Secondary</td>
-                <td>00002MT0001 — FIL 120 BOB.DE 1000 MT 3081B-A282M / MARA120</td>
-                <td>100% cotton</td>
-              </tr>
-              <tr>
-                <td><b>Rib</b></td>
-                <td>Cuff</td>
-                <td>RIB CO/EA DRY JERSEY (CO Textil)</td>
-                <td>100% polyester</td>
-              </tr>
-              <tr>
-                <td><b>Embroidery — Front</b></td>
-                <td>Small @ centre front, 8 cm from collar</td>
-                <td>BETA BACK EMBRO</td>
-                <td><i>Data not specified</i></td>
-              </tr>
-              <tr>
-                <td><b>Embroidery — Back</b></td>
-                <td>Big @ back, 10 cm from collar</td>
-                <td>BETA BACK EMBRO</td>
-                <td><i>Data not specified</i></td>
-              </tr>
-              <tr>
-                <td><b>Treatment 1</b></td>
-                <td>Finishing</td>
-                <td>STRONG STONE WASH</td>
-                <td>—</td>
-              </tr>
-              <tr>
-                <td><b>Treatment 2</b></td>
-                <td>Finishing</td>
-                <td>NO LOGO DESTROY</td>
-                <td>—</td>
-              </tr>
-              <tr>
-                <td><b>Treatment 3</b></td>
-                <td>Finishing</td>
-                <td>PAINT</td>
-                <td>—</td>
-              </tr>
-              <tr>
-                <td colspan="4" style="background:#fdfcf8;font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:var(--ink-soft)">Packaging components (Griffes)</td>
-              </tr>
-              <tr>
-                <td>Griffe 1</td><td>Side label, hem</td>
-                <td>00002NT0628 — GRIFFE BET UNISEX PLI BAS 5MM</td>
-                <td>100% recycled polyester</td>
-              </tr>
-              <tr>
-                <td>Griffe 2</td><td>Envelope tag</td>
-                <td>00002NT0325 — BET ENVELOPE TAG GREY PAPER HF</td>
-                <td>100% paper</td>
-              </tr>
-              <tr>
-                <td>Griffe 3</td><td>Adhesive label</td>
-                <td>00002NT0012 — ETIQUETTE ADHESIVE OTTCAR</td>
-                <td><i>Data not specified</i></td>
-              </tr>
-              <tr>
-                <td>Griffe 4</td><td>Composition label</td>
-                <td>00002NT9002 — ETIQUETTE COMPOSITION RECYCLE</td>
-                <td>100% recycled polyester</td>
-              </tr>
-              <tr>
-                <td>Griffe 5</td><td>Importers label (35×150 cm)</td>
-                <td>00002NT2024</td>
-                <td>100% polyester</td>
-              </tr>
-              <tr>
-                <td>Griffe 6</td><td>Sachet 40×45</td>
-                <td>00002OT0015</td>
-                <td>100% polyethylene</td>
-              </tr>
-              <tr>
-                <td>Griffe 7</td><td>Tissue paper 75×51 (1500 pc/box)</td>
-                <td>00002OT0001 — PAPIER VELIN</td>
-                <td>100% paper</td>
-              </tr>
-              <tr>
-                <td>Griffe 8</td><td>Size chip XXS–XXL</td>
-                <td>00002NT0029 — PUCE de taille</td>
-                <td>100% paper</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <table class="data" style="margin-top:16px">
-          <tr>
-            <th>Fabric quantity per garment</th>
-            <td class="value">0.1 m (Fabric 1)</td>
-            <td class="src"><span class="badge b-scheda">Tech sheet</span></td>
-          </tr>
-          <tr>
-            <th>Cotton input (batch-level reference)</th>
-            <td class="value">
-              279 kg cotton → 800 T-shirts produced
-              <div class="sub">≈ 0.349 kg cotton per garment. Reconstructed from VTP purchase-order data.</div>
-            </td>
-            <td class="src"><span class="badge b-vtp">VTP</span></td>
-          </tr>
-          <tr>
-            <th>Detailed input resources (kg / m³)</th>
-            <td class="value na">Data not available at brand level</td>
-            <td class="src"><span class="badge b-other">—</span></td>
-          </tr>
-        </table>
-
-        <div class="info-box">
-          <b>Notation:</b> in the composition column, <i>R</i> = embroidery (<i>ricamo</i>), <i>T</i> = fabric (<i>tessuto</i>), as used in the brand's internal technical sheet.
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ 5. ENVIRONMENTAL ============ -->
-    <section class="domain" id="d5">
-      <header onclick="toggle(this)">
-        <h2><span class="num">05</span> Environmental Sustainability</h2>
-        <div class="h-right"><span class="status st-missing">Missing</span><span class="chev"></span></div>
-      </header>
-      <div class="body">
-        <table class="data">
-          <tr><th>GHG emissions (kg CO₂ eq)</th><td class="value na">Data not available</td><td class="src"><span class="badge b-other">—</span></td></tr>
-          <tr><th>Particulate matter (kg PM10)</th><td class="value na">Data not available</td><td class="src"><span class="badge b-other">—</span></td></tr>
-          <tr><th>Photochemical ozone formation potential (kg NMVOC eq)</th><td class="value na">Data not available</td><td class="src"><span class="badge b-other">—</span></td></tr>
-          <tr><th>Acidification potential (kg SO₂ eq)</th><td class="value na">Data not available</td><td class="src"><span class="badge b-other">—</span></td></tr>
-          <tr><th>Ozone depletion (kg CFC-11 eq)</th><td class="value na">Data not available</td><td class="src"><span class="badge b-other">—</span></td></tr>
-          <tr><th>Eutrophication — Terrestrial (kg N eq)</th><td class="value na">Data not available</td><td class="src"><span class="badge b-other">—</span></td></tr>
-          <tr><th>Eutrophication — Freshwater (kg P eq)</th><td class="value na">Data not available</td><td class="src"><span class="badge b-other">—</span></td></tr>
-          <tr><th>Energy consumption — Total (MJ)</th><td class="value na">Data not available</td><td class="src"><span class="badge b-other">—</span></td></tr>
-          <tr><th>Energy consumption — Fossil (MJ)</th><td class="value na">Data not available</td><td class="src"><span class="badge b-other">—</span></td></tr>
-          <tr><th>Water footprint (m³)</th><td class="value na">Data not available</td><td class="src"><span class="badge b-other">—</span></td></tr>
-          <tr><th>Land use (kg)</th><td class="value na">Data not available</td><td class="src"><span class="badge b-other">—</span></td></tr>
-          <tr><th>Hazardous substances &amp; SVHC</th><td class="value na">Data not available</td><td class="src"><span class="badge b-other">—</span></td></tr>
-          <tr><th>Waste (kg or m³)</th><td class="value na">Data not available</td><td class="src"><span class="badge b-other">—</span></td></tr>
-        </table>
-        <div class="note-box">
-          <b>Case-study finding:</b> the entire environmental impact domain is not populated by the brand's current systems at product level. This is a substantial DPP gap and a likely first priority for compliance with upcoming ESPR / DPP regulatory requirements.
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ 6. SOCIAL ============ -->
-    <section class="domain" id="d6">
-      <header onclick="toggle(this)">
-        <h2><span class="num">06</span> Social Sustainability</h2>
-        <div class="h-right"><span class="status st-partial">Partial</span><span class="chev"></span></div>
-      </header>
-      <div class="body">
-        <table class="data">
-          <tr>
-            <th>Child labour rate</th>
-            <td class="value">0% <span class="role-tag">verified</span></td>
-            <td class="src"><span class="badge b-axoria">Axoria audit</span></td>
-          </tr>
-          <tr>
-            <th>Forced labour frequency</th>
-            <td class="value">0% <span class="role-tag">verified</span></td>
-            <td class="src"><span class="badge b-axoria">Axoria audit</span></td>
-          </tr>
-          <tr>
-            <th>Minimum wage (€ / month)</th>
-            <td class="value">Supplier meets at least the Portuguese statutory minimum wage.</td>
-            <td class="src"><span class="badge b-axoria">Axoria audit</span></td>
-          </tr>
-          <tr>
-            <th>Living wage (€ / month)</th>
-            <td class="value na">Not visible at brand level — held centrally by the Axoria audit team.</td>
-            <td class="src"><span class="badge b-axoria">Axoria audit</span></td>
-          </tr>
-          <tr>
-            <th>Sector average wage</th>
-            <td class="value na">Not visible at brand level.</td>
-            <td class="src"><span class="badge b-axoria">Axoria audit</span></td>
-          </tr>
-          <tr>
-            <th>Gender wage gap (%)</th>
-            <td class="value na">Not visible at brand level.</td>
-            <td class="src"><span class="badge b-axoria">Axoria audit</span></td>
-          </tr>
-          <tr>
-            <th>Women employment rate (%)</th>
-            <td class="value na">Not visible at brand level.</td>
-            <td class="src"><span class="badge b-axoria">Axoria audit</span></td>
-          </tr>
-          <tr>
-            <th>Shift working hours (h/day)</th>
-            <td class="value na">Not visible at brand level.</td>
-            <td class="src"><span class="badge b-axoria">Axoria audit</span></td>
-          </tr>
-          <tr>
-            <th>Average weekly working hours (h/week)</th>
-            <td class="value na">Not visible at brand level.</td>
-            <td class="src"><span class="badge b-axoria">Axoria audit</span></td>
-          </tr>
-          <tr>
-            <th>Rate of job accidents (per 10⁵ workers)</th>
-            <td class="value na">Not visible at brand level.</td>
-            <td class="src"><span class="badge b-axoria">Axoria audit</span></td>
-          </tr>
-          <tr>
-            <th>Labour conditions &amp; safety reports</th>
-            <td class="value na">Not visible at brand level.</td>
-            <td class="src"><span class="badge b-axoria">Axoria audit</span></td>
-          </tr>
-          <tr>
-            <th>Grievance mechanism</th>
-            <td class="value">Access to the Axoria ethical reporting hotline.</td>
-            <td class="src"><span class="badge b-axoria">Axoria audit</span></td>
-          </tr>
-        </table>
-        <div class="note-box">
-          <b>Case-study finding — data visibility asymmetry:</b> the audit programme is centralised under the parent group's Supply Chain Security team. The brand collects evidence of compliance (binary attestations) but does not receive the granular indicators (wages, hours, accidents). For DPP purposes this creates a verification ↔ disclosure gap.
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ 7. PERFORMANCES ============ -->
-    <section class="domain" id="d7">
-      <header onclick="toggle(this)">
-        <h2><span class="num">07</span> Product Performances</h2>
-        <div class="h-right"><span class="status st-missing">Missing</span><span class="chev"></span></div>
-      </header>
-      <div class="body">
-        <table class="data">
-          <tr><th>Durability — expected lifetime (cycles / years)</th><td class="value na">Data not available</td><td class="src"><span class="badge b-other">—</span></td></tr>
-          <tr><th>Dimensional stability — variation (%)</th><td class="value na">Data not available</td><td class="src"><span class="badge b-other">—</span></td></tr>
-          <tr><th>Surface durability — pilling (scale 1–5)</th><td class="value na">Data not available</td><td class="src"><span class="badge b-other">—</span></td></tr>
-          <tr><th>Surface durability — colour change (scale 1–5)</th><td class="value na">Data not available</td><td class="src"><span class="badge b-other">—</span></td></tr>
-          <tr><th>Mechanical properties — tensile strength (MPa)</th><td class="value na">Data not available</td><td class="src"><span class="badge b-other">—</span></td></tr>
-          <tr><th>Samples and analysis list</th><td class="value na">Data not available</td><td class="src"><span class="badge b-other">—</span></td></tr>
-        </table>
-        <div class="note-box">
-          <b>Case-study finding:</b> physical-performance testing data is not systematically recorded in a way that is linkable to the individual SKU/EAN, despite being commonly available from lab partners during product development.
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ 8. CIRCULARITY ============ -->
-    <section class="domain" id="d8">
-      <header onclick="toggle(this)">
-        <h2><span class="num">08</span> Circularity &amp; End-of-Life</h2>
-        <div class="h-right"><span class="status st-partial">Partial</span><span class="chev"></span></div>
-      </header>
-      <div class="body">
-        <table class="data">
-          <tr><th>Recycled input content (%)</th><td class="value na">Data not available at brand level</td><td class="src"><span class="badge b-other">—</span></td></tr>
-          <tr><th>Recyclability (%)</th><td class="value na">Data not available at brand level</td><td class="src"><span class="badge b-other">—</span></td></tr>
-          <tr><th>Recycling rate (%)</th><td class="value na">Data not available at brand level</td><td class="src"><span class="badge b-other">—</span></td></tr>
-          <tr>
-            <th>Reuse instructions</th>
-            <td class="value">Managed via the <b>Reusant</b> end-of-life service platform.</td>
-            <td class="src"><span class="badge b-reusant">Reusant</span></td>
-          </tr>
-          <tr>
-            <th>Repair instructions</th>
-            <td class="value na">Data not available</td>
-            <td class="src"><span class="badge b-other">—</span></td>
-          </tr>
-          <tr>
-            <th>Remanufacture instructions</th>
-            <td class="value na">Data not available</td>
-            <td class="src"><span class="badge b-other">—</span></td>
-          </tr>
-          <tr>
-            <th>Recycle instructions</th>
-            <td class="value">Managed via the <b>Reusant</b> platform.</td>
-            <td class="src"><span class="badge b-reusant">Reusant</span></td>
-          </tr>
-          <tr>
-            <th>Disassembly instructions</th>
-            <td class="value na">Data not available</td>
-            <td class="src"><span class="badge b-other">—</span></td>
-          </tr>
-          <tr>
-            <th>Collection points</th>
-            <td class="value">Network operated by <b>Reusant</b>.</td>
-            <td class="src"><span class="badge b-reusant">Reusant</span></td>
-          </tr>
-          <tr>
-            <th>End-of-Life pathways</th>
-            <td class="value">Operated by <b>Reusant</b>.</td>
-            <td class="src"><span class="badge b-reusant">Reusant</span></td>
-          </tr>
-        </table>
-        <div class="info-box">
-          <b>Observation:</b> the circularity domain is partly outsourced to a dedicated third-party platform (Reusant). For DPP purposes this means that end-of-life data is service-provider-controlled, not brand-controlled — an integration point to design carefully (data ownership, API contracts, persistence beyond contract termination).
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ 9. AFTERSALES ============ -->
-    <section class="domain" id="d9">
-      <header onclick="toggle(this)">
-        <h2><span class="num">09</span> Aftersales &amp; Support</h2>
-        <div class="h-right"><span class="status st-partial">Partial</span><span class="chev"></span></div>
-      </header>
-      <div class="body">
-        <table class="data">
-          <tr>
-            <th>Use, maintenance and service manual</th>
-            <td class="value">
-              Wash gently at max 30 °C. Wash separately. Wash inside-out. Do not use fabric softener. Do not bleach. Do not tumble dry. Delicate spin max 400 rpm. Drip-dry in the shade. Iron at max 120 °C without steam, inside-out. Do not dry-clean.
-            </td>
-            <td class="src"><span class="badge b-other">Customer-level</span></td>
-          </tr>
-          <tr><th>Certified service provider</th><td class="value na">Data not available</td><td class="src"><span class="badge b-other">—</span></td></tr>
-          <tr><th>Warranty</th><td class="value na">Data not available</td><td class="src"><span class="badge b-other">—</span></td></tr>
-          <tr>
-            <th>Service history</th>
-            <td class="value">Captured by the <b>Aftersales Dynamics AX</b> platform (no individual record shared in this case).</td>
-            <td class="src"><span class="badge b-other">Dyn. AX</span></td>
-          </tr>
-          <tr><th>Health and safety information</th><td class="value na">Data not available</td><td class="src"><span class="badge b-other">—</span></td></tr>
-          <tr><th>Product lifecycle responsibility</th><td class="value na">Data not available</td><td class="src"><span class="badge b-other">—</span></td></tr>
-        </table>
-      </div>
-    </section>
-
-    <!-- ============ 10. REGULATION ============ -->
-    <section class="domain" id="d10">
-      <header onclick="toggle(this)">
-        <h2><span class="num">10</span> Regulation, Certification &amp; Documentation</h2>
-        <div class="h-right"><span class="status st-partial">Partial</span><span class="chev"></span></div>
-      </header>
-      <div class="body">
-        <table class="data">
-          <tr>
-            <th>Regulatory compliance</th>
-            <td class="value na">Data not available in the brand's current consolidated view (referenced framework: French AGEC law).</td>
-            <td class="src"><span class="badge b-other">AGEC</span></td>
-          </tr>
-          <tr>
-            <th>Certifications, labels and IP</th>
-            <td class="value">
-              <b>GOTS</b> — Global Organic Textile Standard, applied to the main cotton input.
-            </td>
-            <td class="src"><span class="badge b-vtp">VTP</span></td>
-          </tr>
-          <tr><th>Technical documentation</th><td class="value na">Data not available</td><td class="src"><span class="badge b-other">—</span></td></tr>
-          <tr><th>Record of ownership history</th><td class="value na">Data not available</td><td class="src"><span class="badge b-other">—</span></td></tr>
-          <tr><th>Quality test reports</th><td class="value na">Data not available</td><td class="src"><span class="badge b-other">—</span></td></tr>
-        </table>
-      </div>
-    </section>
-
   </div>
-</main>
+</div>
 
-<footer class="page">
+<div class="sections">
+  <div class="wrap" id="accordions"></div>
+</div>
+
+<footer>
   <div class="wrap">
-    <div>Digital Product Passport — interactive case-study companion to the thesis. Data anonymised where appropriate.</div>
-    <div>Reference DPP key (EAN): 4666620689653</div>
+    <div class="foot-id">DPP ID · PRD-TSH-0001</div>
+    <p class="foot-note">This Digital Product Passport presents reworked data collected for academic research purposes. No sensitive corporate information is exposed.</p>
   </div>
 </footer>
 
 <script>
-  function toggle(el) {
-    el.parentElement.classList.toggle('open');
-  }
-  function setAll(open) {
-    document.querySelectorAll('section.domain').forEach(s => {
-      s.classList.toggle('open', open);
-    });
-  }
+// ---- Icons (inline SVG) ----
+const ic = {
+  id:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M7 9h4M7 13h7" stroke-linecap="round"/></svg>',
+  material:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7l8-4 8 4-8 4-8-4z" stroke-linejoin="round"/><path d="M4 7v6l8 4 8-4V7" stroke-linejoin="round"/></svg>',
+  care:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 5h14l-2 14H7L5 5z" stroke-linejoin="round"/><path d="M9 9c1 1 2 1 3 0s2-1 3 0" stroke-linecap="round"/></svg>',
+  trace:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="10" r="3"/><path d="M12 2a8 8 0 00-8 8c0 5.5 8 12 8 12s8-6.5 8-12a8 8 0 00-8-8z" stroke-linejoin="round"/></svg>',
+  cert:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="9" r="5"/><path d="M9 13l-2 8 5-3 5 3-2-8" stroke-linejoin="round"/></svg>',
+  env:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21c5-2 8-6 8-11V4l-8 2-8-2v6c0 5 3 9 8 11z" stroke-linejoin="round"/><path d="M12 8v9" stroke-linecap="round"/></svg>'
+};
 
-  // Compute data completeness
-  (function () {
-    const cells = document.querySelectorAll('table.data td.value, table.bom-table td');
-    let total = 0, missing = 0;
-    cells.forEach(c => {
-      // Only count rows in main data tables (skip header-like rows in BOM)
-      if (c.closest('thead')) return;
-      total++;
-      if (c.classList.contains('na') || /Data not available|Not visible at brand level|Data not specified/i.test(c.textContent)) {
-        missing++;
-      }
-    });
-    const populated = total - missing;
-    const pct = total ? Math.round((populated / total) * 100) : 0;
-    document.getElementById('comp-pct').textContent = pct + '%';
-    document.getElementById('comp-bar').style.width = pct + '%';
-  })();
+// ---- Data model. Replace "Data not available" with real values from the Excel. ----
+const NA = "Data not available";
+const sections = [
+  { icon:'id', title:'Product Identification Data', rows:[
+    ['Product Name', NA],
+    ['Brand', NA],
+    ['Model / Style Code', NA],
+    ['SKU / Article Number', NA],
+    ['GTIN / EAN', NA],
+    ['Product Category', NA],
+    ['Color', NA],
+    ['Available Sizes', NA],
+    ['Country of Origin', NA],
+    ['Manufacturing Date', NA],
+    ['Unique Product Identifier (DPP ID)', 'PRD-TSH-0001'],
+  ]},
+  { icon:'material', title:'Material Composition Data', rows:[
+    ['Main Material', NA],
+    ['Fabric Composition', NA],
+    ['Fabric Weight (GSM)', NA],
+    ['Construction / Knit Type', NA],
+    ['Trims & Components', NA],
+    ['Recycled Content', NA],
+    ['Hazardous Substances Declaration', NA],
+  ]},
+  { icon:'care', title:'Care & Maintenance', rows:[
+    ['Washing', NA],
+    ['Bleaching', NA],
+    ['Drying', NA],
+    ['Ironing', NA],
+    ['Dry Cleaning', NA],
+    ['Special Care Notes', NA],
+  ]},
+  { icon:'trace', title:'Supply Chain Traceability', rows:[
+    ['Raw Material Origin', NA],
+    ['Spinning / Yarn Location', NA],
+    ['Fabric Production Location', NA],
+    ['Manufacturing / Assembly Location', NA],
+    ['Final Product Facility', NA],
+    ['Suppliers (Tier 1–3)', NA],
+  ]},
+  { icon:'cert', title:'Supply Chain Certification', rows:[
+    ['Certifications', NA],
+    ['Certification Body', NA],
+    ['Certificate Number', NA],
+    ['Validity Period', NA],
+  ]},
+  { icon:'env', title:'Environmental Impact Data', rows:[
+    ['Carbon Footprint (kg CO₂e)', NA],
+    ['Water Usage (L)', NA],
+    ['Energy Consumption', NA],
+    ['Recyclability', NA],
+    ['End-of-Life Instructions', NA],
+  ]},
+];
 
-  // Smooth scroll for TOC, accounting for sticky nav
-  document.querySelectorAll('.toc a').forEach(a => {
-    a.addEventListener('click', e => {
-      const id = a.getAttribute('href').slice(1);
-      const target = document.getElementById(id);
-      if (target) {
-        e.preventDefault();
-        target.classList.add('open');
-        const y = target.getBoundingClientRect().top + window.scrollY - 60;
-        window.scrollTo({ top: y, behavior: 'smooth' });
-      }
-    });
+// ---- Render ----
+const root = document.getElementById('accordions');
+sections.forEach((s, i) => {
+  const acc = document.createElement('div');
+  acc.className = 'acc' + (i === 0 ? ' open' : '');
+  const rowsHtml = s.rows.map(([k,v]) => {
+    const na = (v === NA) ? ' na' : '';
+    return `<div class="data-row"><span class="data-key">${k}</span><span class="data-val${na}">${v}</span></div>`;
+  }).join('');
+  acc.innerHTML = `
+    <div class="acc-head">
+      <span class="acc-icon">${ic[s.icon]}</span>
+      <span class="acc-title">${s.title}</span>
+      <svg class="acc-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+    <div class="acc-body"><div class="acc-inner"><div class="data-grid">${rowsHtml}</div></div></div>`;
+  root.appendChild(acc);
+
+  const head = acc.querySelector('.acc-head');
+  const body = acc.querySelector('.acc-body');
+  head.addEventListener('click', () => {
+    const isOpen = acc.classList.contains('open');
+    if (isOpen) {
+      body.style.maxHeight = null;
+      acc.classList.remove('open');
+    } else {
+      acc.classList.add('open');
+      body.style.maxHeight = body.scrollHeight + 'px';
+    }
   });
-</script>
+});
 
-</body>
-</html>
+// open first by default
+requestAnimationFrame(() => {
+  const first = root.querySelector('.acc.open .acc-body');
+  if (first) first.style.maxHeight = first.scrollHeight + 'px';
+});
+</script>
