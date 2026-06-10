@@ -1,6 +1,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Digital Product Passport — T-Shirt</title>
+<title>Digital Product Passport — Medium Fit T-Shirt | Beta</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -18,6 +18,8 @@
     --line:#E6D6C8;
     --gold:#B89B6E;
     --white:#FFFFFF;
+    --pass:#7A9E7E;
+    --fail:#C0706A;
   }
   *{margin:0;padding:0;box-sizing:border-box}
   body{
@@ -36,11 +38,13 @@
     padding:18px 0;
   }
   .topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px}
+  .brand-block{display:flex;flex-direction:column}
   .brand-logo{
     font-family:'Cormorant Garamond',serif;
-    font-size:24px;font-weight:600;letter-spacing:2px;
-    color:var(--mauve);text-transform:uppercase;
+    font-size:26px;font-weight:600;letter-spacing:3px;
+    color:var(--mauve);text-transform:uppercase;line-height:1.1;
   }
+  .brand-group{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--muted)}
   .passport-tag{
     display:inline-flex;align-items:center;gap:8px;
     font-size:11px;letter-spacing:1.5px;text-transform:uppercase;
@@ -123,20 +127,42 @@
     transition:max-height .4s ease;
   }
   .acc-inner{padding:4px 24px 24px}
-  .data-grid{
-    display:grid;grid-template-columns:1fr;gap:0;
-    border-top:1px solid var(--line);
-  }
+  .data-grid{border-top:1px solid var(--line)}
   .data-row{
     display:flex;justify-content:space-between;gap:20px;
     padding:13px 0;border-bottom:1px solid var(--line);
   }
   .data-row:last-child{border-bottom:none}
-  .data-key{color:var(--muted);font-size:14px;font-weight:400;flex-shrink:0;max-width:48%}
+  .data-key{color:var(--muted);font-size:14px;font-weight:400;flex-shrink:0;max-width:46%}
   .data-val{
-    color:var(--ink);font-size:14px;font-weight:500;text-align:right;
+    color:var(--ink);font-size:14px;font-weight:500;text-align:right;white-space:pre-line;
   }
   .data-val.na{color:var(--muted);font-style:italic;font-weight:400}
+  .sub-block{
+    margin-top:18px;
+  }
+  .sub-title{
+    font-size:11px;letter-spacing:2px;text-transform:uppercase;
+    color:var(--rose-deep);font-weight:600;margin-bottom:4px;
+  }
+  .note-box{
+    margin-top:18px;background:var(--cream);
+    border:1px solid var(--line);border-radius:12px;
+    padding:16px 18px;font-size:13.5px;color:var(--ink);
+  }
+  .note-box strong{color:var(--mauve)}
+  .badge{
+    display:inline-block;padding:3px 10px;border-radius:20px;
+    font-size:11.5px;font-weight:600;letter-spacing:.5px;
+  }
+  .badge.pass{background:rgba(122,158,126,.14);color:var(--pass)}
+  .badge.fail{background:rgba(192,112,106,.14);color:var(--fail)}
+  .test-row{
+    display:flex;justify-content:space-between;align-items:center;gap:16px;
+    padding:11px 0;border-bottom:1px solid var(--line);font-size:13.5px;
+  }
+  .test-row:last-child{border-bottom:none}
+  .test-name{color:var(--ink)}
 
   /* Footer */
   footer{
@@ -145,7 +171,7 @@
   }
   footer .wrap{display:flex;flex-direction:column;gap:8px;align-items:center}
   .foot-id{font-size:12px;letter-spacing:1px;color:var(--mauve);font-weight:500}
-  .foot-note{font-size:12px;color:var(--muted);max-width:520px}
+  .foot-note{font-size:12px;color:var(--muted);max-width:560px}
 
   @media(max-width:560px){
     .product-title{font-size:32px}
@@ -160,7 +186,10 @@
 
 <div class="topbar">
   <div class="wrap">
-    <div class="brand-logo">Beta</div>
+    <div class="brand-block">
+      <div class="brand-logo">Beta</div>
+      <div class="brand-group">Axoria Group</div>
+    </div>
     <span class="passport-tag"><span class="dot"></span>Digital Product Passport</span>
   </div>
 </div>
@@ -173,13 +202,14 @@
         <svg viewBox="0 0 200 230" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="T-shirt front view">
           <defs>
             <linearGradient id="fg" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#F4EDE6"/>
+              <stop offset="0" stop-color="#4A4A4A"/><stop offset="1" stop-color="#3A3A3A"/>
             </linearGradient>
           </defs>
           <path d="M70 18 L55 28 L18 55 L34 86 L52 76 L52 210 Q52 218 60 218 L140 218 Q148 218 148 210 L148 76 L166 86 L182 55 L145 28 L130 18 Q115 40 100 40 Q85 40 70 18 Z"
                 fill="url(#fg)" stroke="#D9A7A7" stroke-width="2"/>
           <path d="M70 18 Q85 40 100 40 Q115 40 130 18" fill="none" stroke="#D9A7A7" stroke-width="2"/>
-          <path d="M75 26 Q100 46 125 26" fill="none" stroke="#E8D9C9" stroke-width="1.5"/>
+          <path d="M75 26 Q100 46 125 26" fill="none" stroke="#5A5A5A" stroke-width="1.5"/>
+          <circle cx="100" cy="74" r="6" fill="none" stroke="#6E6E6E" stroke-width="1.3"/>
         </svg>
         <div class="view-label">Front</div>
       </div>
@@ -187,22 +217,22 @@
         <!-- Replace this SVG with a real back photo: <img src="back.jpg" alt="Back view"> -->
         <svg viewBox="0 0 200 230" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="T-shirt back view">
           <defs>
-            <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#F4EDE6"/>
+            <linearGradient id="bg2" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#4A4A4A"/><stop offset="1" stop-color="#3A3A3A"/>
             </linearGradient>
           </defs>
           <path d="M70 18 L55 28 L18 55 L34 86 L52 76 L52 210 Q52 218 60 218 L140 218 Q148 218 148 210 L148 76 L166 86 L182 55 L145 28 L130 18 Q115 30 100 30 Q85 30 70 18 Z"
-                fill="url(#bg)" stroke="#D9A7A7" stroke-width="2"/>
+                fill="url(#bg2)" stroke="#D9A7A7" stroke-width="2"/>
           <path d="M70 18 Q85 30 100 30 Q115 30 130 18" fill="none" stroke="#D9A7A7" stroke-width="2"/>
-          <rect x="86" y="34" width="28" height="16" rx="3" fill="none" stroke="#E8D9C9" stroke-width="1.5"/>
+          <rect x="80" y="46" width="40" height="14" rx="3" fill="none" stroke="#6E6E6E" stroke-width="1.3"/>
         </svg>
         <div class="view-label">Back</div>
       </div>
     </div>
 
-    <div class="product-category">Apparel · T-Shirt</div>
-    <h1 class="product-title">Men's Basic White T-Shirt</h1>
-    <p class="product-sub">Product Reference: PRD-TSH-0001</p>
+    <div class="product-category">RTW · Men's Jersey · Tops</div>
+    <h1 class="product-title">Medium Fit T-Shirt</h1>
+    <p class="product-sub">Faded Washed Black/W · Reference size S · EAN 4666620689653</p>
 
     <div class="verified">
       <svg viewBox="0 0 24 24" fill="none" stroke="#C68B8B" stroke-width="2"><path d="M9 12l2 2 4-4M21 12a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -217,75 +247,210 @@
 
 <footer>
   <div class="wrap">
-    <div class="foot-id">DPP ID · PRD-TSH-0001</div>
-    <p class="foot-note">This Digital Product Passport presents reworked data collected for academic research purposes. No sensitive corporate information is exposed.</p>
+    <div class="foot-id">DPP ID · EAN 4666620689653 · Beta — Axoria Group</div>
+    <p class="foot-note">This Digital Product Passport presents reworked data collected for academic research purposes. Brand and group names are fictional to preserve corporate confidentiality. No sensitive information is exposed.</p>
   </div>
 </footer>
 
 <script>
-// ---- Icons (inline SVG) ----
+// ---- Icons ----
 const ic = {
   id:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M7 9h4M7 13h7" stroke-linecap="round"/></svg>',
-  material:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7l8-4 8 4-8 4-8-4z" stroke-linejoin="round"/><path d="M4 7v6l8 4 8-4V7" stroke-linejoin="round"/></svg>',
-  care:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 5h14l-2 14H7L5 5z" stroke-linejoin="round"/><path d="M9 9c1 1 2 1 3 0s2-1 3 0" stroke-linecap="round"/></svg>',
+  factory:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21V11l6 4v-4l6 4V7l6-3v17H3z" stroke-linejoin="round"/></svg>',
   trace:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="10" r="3"/><path d="M12 2a8 8 0 00-8 8c0 5.5 8 12 8 12s8-6.5 8-12a8 8 0 00-8-8z" stroke-linejoin="round"/></svg>',
-  cert:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="9" r="5"/><path d="M9 13l-2 8 5-3 5 3-2-8" stroke-linejoin="round"/></svg>',
-  env:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21c5-2 8-6 8-11V4l-8 2-8-2v6c0 5 3 9 8 11z" stroke-linejoin="round"/><path d="M12 8v9" stroke-linecap="round"/></svg>'
+  material:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7l8-4 8 4-8 4-8-4z" stroke-linejoin="round"/><path d="M4 7v6l8 4 8-4V7" stroke-linejoin="round"/></svg>',
+  env:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21c5-2 8-6 8-11V4l-8 2-8-2v6c0 5 3 9 8 11z" stroke-linejoin="round"/><path d="M12 8v9" stroke-linecap="round"/></svg>',
+  social:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.4"/><path d="M3 20c0-3.3 2.7-5 6-5s6 1.7 6 5M15 15.3c2.6.2 4.8 1.6 4.8 4.2" stroke-linecap="round"/></svg>',
+  perf:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19h16M6 16V9M11 16V5M16 16v-6" stroke-linecap="round"/></svg>',
+  loop:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 11a8 8 0 0114-4M20 13a8 8 0 01-14 4" stroke-linecap="round"/><path d="M18 3v4h-4M6 21v-4h4" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+  care:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 5h14l-2 14H7L5 5z" stroke-linejoin="round"/><path d="M9 9c1 1 2 1 3 0s2-1 3 0" stroke-linecap="round"/></svg>',
+  cert:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="9" r="5"/><path d="M9 13l-2 8 5-3 5 3-2-8" stroke-linejoin="round"/></svg>'
 };
 
-// ---- Data model. Replace "Data not available" with real values from the Excel. ----
 const NA = "Data not available";
+const row = (k,v) => ({k, v});
+
+// ---- Sections data (from real reworked case data) ----
 const sections = [
-  { icon:'id', title:'Product Identification Data', rows:[
-    ['Product Name', NA],
-    ['Brand', NA],
-    ['Model / Style Code', NA],
-    ['SKU / Article Number', NA],
-    ['GTIN / EAN', NA],
-    ['Product Category', NA],
-    ['Color', NA],
-    ['Available Sizes', NA],
-    ['Country of Origin', NA],
-    ['Manufacturing Date', NA],
-    ['Unique Product Identifier (DPP ID)', 'PRD-TSH-0001'],
+  { icon:'id', title:'Product Identification Data', blocks:[
+    { rows:[
+      row('Product Name','Medium Fit T-Shirt'),
+      row('Brand','Beta (Axoria Group)'),
+      row('Sector','RTW (Textile / Apparel)'),
+      row('Department','Men\'s Jersey'),
+      row('Subdepartment','Tops'),
+      row('Class','Crew Short Sleeves'),
+      row('Subclass','Casual'),
+      row('Article Number','654321UVZ879374'),
+      row('SKU','813986202'),
+      row('EAN (Unique Product Identifier — DPP)','4666620689653'),
+      row('Product Colour','Faded Washed Black/W (9374)'),
+      row('Reference Size','S (IT 36)'),
+      row('Product Weight','0.300 kg'),
+      row('Product Dimensions','76 cm × (59 + 25.5×2) cm'),
+    ]}
   ]},
-  { icon:'material', title:'Material Composition Data', rows:[
-    ['Main Material', NA],
-    ['Fabric Composition', NA],
-    ['Fabric Weight (GSM)', NA],
-    ['Construction / Knit Type', NA],
-    ['Trims & Components', NA],
-    ['Recycled Content', NA],
-    ['Hazardous Substances Declaration', NA],
+  { icon:'factory', title:'Manufacturing Information', blocks:[
+    { rows:[
+      row('Manufacturer Name','CO Textil S.A.'),
+      row('Manufacturing Location','Portugal'),
+      row('Manufacturing Process','Manufacturing'),
+      row('Manufacturing Date','05/12/2025'),
+      row('Unique Operator Identifier (DUNS)','577037746'),
+      row('Unique Facility Identifier (ZDHC ID)','A244ZW24'),
+      row('Purchase Order ID','561257'),
+    ]}
   ]},
-  { icon:'care', title:'Care & Maintenance', rows:[
-    ['Washing', NA],
-    ['Bleaching', NA],
-    ['Drying', NA],
-    ['Ironing', NA],
-    ['Dry Cleaning', NA],
-    ['Special Care Notes', NA],
+  { icon:'trace', title:'Supply Chain Traceability', blocks:[
+    { sub:'Tier 1 — Finished Product Supplier', rows:[
+      row('Supplier','CO Textil S.A.'),
+      row('Location','Portugal'),
+      row('Process','Manufacturing'),
+    ]},
+    { sub:'Tier 2 — Fabric Mill', rows:[
+      row('Supplier','M&A S.A.'),
+      row('Location','Portugal'),
+      row('Process','Knitting, Dyeing'),
+    ]},
+    { sub:'Tier 3 — Spinner', rows:[
+      row('Supplier','Fios'),
+      row('Location','Portugal'),
+      row('Process','Yarn'),
+    ]},
+    { sub:'Raw Materials', rows:[
+      row('Origin','Türkiye'),
+      row('Main Fabric Cotton','Organic GOTS Cotton'),
+    ]},
+    { sub:'Product Tracking & Transport', rows:[
+      row('Forward (within tiers, warehouse to stores)',NA),
+      row('Backward / Aftersales (stores to outlets, second hand)',NA),
+    ]},
   ]},
-  { icon:'trace', title:'Supply Chain Traceability', rows:[
-    ['Raw Material Origin', NA],
-    ['Spinning / Yarn Location', NA],
-    ['Fabric Production Location', NA],
-    ['Manufacturing / Assembly Location', NA],
-    ['Final Product Facility', NA],
-    ['Suppliers (Tier 1–3)', NA],
+  { icon:'material', title:'Product Composition', blocks:[
+    { sub:'Main Materials', rows:[
+      row('Fabric 1 — Main Material (Jersey)','100% Cotton (Organic GOTS)'),
+      row('Fabric 2','100% Polyester'),
+      row('Rib (collar)','CO/EA Dry Jersey'),
+      row('Embroidery Yarn','99% Cotton, 1% Elastane'),
+      row('Quantity of Fabric Used','0.1 m'),
+    ]},
+    { sub:'Details & Treatments', rows:[
+      row('Embroidery — Front','Beta back embro, small @ center front from collar (8 cm)'),
+      row('Embroidery — Back','Beta back embro, big @ back from collar (10 cm)'),
+      row('Treatment 1','Strong Stone Wash'),
+      row('Treatment 2','No Logo Destroy'),
+      row('Treatment 3','Paint'),
+    ]},
+    { sub:'Labels & Packaging (Griffe)', rows:[
+      row('Brand Label (unisex)','100% Recycled Polyester'),
+      row('Envelope Tag','100% Grey Paper'),
+      row('Composition Label','100% Recycled Polyester'),
+      row('Importers Label (35×150 mm)','100% Polyester'),
+      row('Sachet (40×45)','100% Polyethylene'),
+      row('Tissue Paper (75×51)','100% Paper'),
+      row('Size Chip (XXS–XXL)','100% Paper'),
+    ]},
   ]},
-  { icon:'cert', title:'Supply Chain Certification', rows:[
-    ['Certifications', NA],
-    ['Certification Body', NA],
-    ['Certificate Number', NA],
-    ['Validity Period', NA],
+  { icon:'env', title:'Environmental Sustainability', blocks:[
+    { rows:[
+      row('GHG Emissions (kg CO₂ eq)',NA),
+      row('Particulate Matter (kg PM10)',NA),
+      row('Photochemical Ozone Formation (kg NMVOC eq)',NA),
+      row('Acidification Potential (kg SO₂ eq)',NA),
+      row('Ozone Depletion (kg CFC-11 eq)',NA),
+      row('Eutrophication — Terrestrial (kg N eq)',NA),
+      row('Eutrophication — Freshwater (kg P eq)',NA),
+      row('Energy Consumption — Total (MJ)',NA),
+      row('Energy Consumption — Fossil (MJ)',NA),
+      row('Water Footprint (m³)',NA),
+      row('Land Use (kg)',NA),
+      row('Hazardous Substances and SVHC',NA),
+      row('Waste (kg or m³)','N/A'),
+    ]}
   ]},
-  { icon:'env', title:'Environmental Impact Data', rows:[
-    ['Carbon Footprint (kg CO₂e)', NA],
-    ['Water Usage (L)', NA],
-    ['Energy Consumption', NA],
-    ['Recyclability', NA],
-    ['End-of-Life Instructions', NA],
+  { icon:'social', title:'Social Sustainability', blocks:[
+    { sub:'Human Rights & Ethical Practices', rows:[
+      row('Child Labour','0% (verified through Axoria audit)'),
+      row('Forced Labour Frequency','0% (verified through Axoria audit)'),
+    ]},
+    { sub:'Economic Conditions & Compensation', rows:[
+      row('Living Wage','Data held by Axoria Auditing team, not visible at brand level'),
+      row('Minimum Wage','Supplier met at least the minimum wage in Portugal'),
+      row('Sector Average Wage','Supplier met at least the minimum wage in Portugal'),
+      row('Gender Wage Gap','Supplier met at least the minimum wage in Portugal'),
+    ]},
+    { sub:'Employment Inclusion & Working Conditions', rows:[
+      row('Women Employment Rate','Supplier met at least the minimum wage in Portugal'),
+      row('Shift Working Hours','Data held by Axoria Auditing team, not visible at brand level'),
+      row('Average Weekly Working Hours','Data held by Axoria Auditing team, not visible at brand level'),
+      row('Rate of Job Accidents','Data held by Axoria Auditing team, not visible at brand level'),
+      row('Labour Conditions & Safety Reports','Data held by Axoria Auditing team, not visible at brand level'),
+      row('Access to Grievance Mechanisms','Access to Axoria ethical reporting hotline'),
+    ]},
+  ]},
+  { icon:'perf', title:'Product Performances', blocks:[
+    { rows:[
+      row('Durability — Expected Lifetime (cycles / years)',NA),
+      row('Dimensional Stability — Dimensional Variation (%)',NA),
+      row('Surface Durability — Pilling (scale 1–5)',NA),
+      row('Surface Durability — Colour Change (scale 1–5)',NA),
+      row('Mechanical Properties — Tensile Strength (MPa)',NA),
+    ], tests:[
+      ['Textiles — Free & Hydrolysed Formaldehyde (Water Extraction Test)','pass'],
+      ['Determination of pH of Aqueous Extract','pass'],
+      ['Textiles — Determination of Odor (Olfactory Method)','pass'],
+      ['Determination of Banned Azo Colourants','pass'],
+      ['Colour Fastness to Water','pass'],
+      ['Colour Fastness to Rubbing (single test)','pass'],
+      ['Colour Fastness to Perspiration','pass'],
+      ['Textiles — Fibers Quantitative Composition (GB test methods)','pass'],
+      ['Colour Fastness to Water (2nd sample)','pass'],
+      ['Colour Fastness to Rubbing (2nd sample)','pass'],
+      ['Colour Fastness to Perspiration (2nd sample)','pass'],
+      ['Textiles — Fibers Quantitative Composition (2nd sample)','fail'],
+    ]}
+  ]},
+  { icon:'loop', title:'Circularity & End-of-Life', blocks:[
+    { sub:'Circularity Metrics', rows:[
+      row('Recycled Input (%)','N/A'),
+      row('Recyclability (%)','N/A'),
+      row('Recycling Rate (%)','N/A'),
+    ]},
+    { sub:'R-Strategies', rows:[
+      row('Reuse','Available via Reusant'),
+      row('Repair',NA),
+      row('Remanufacture',NA),
+      row('Recycle','Available via Reusant'),
+      row('Disassembly Instructions',NA),
+      row('Collection Points','Available via Reusant'),
+      row('End-of-Life Pathways','Available via Reusant'),
+    ], note:'<strong>Beta Re-sell Program (powered by Reusant).</strong> Through Reusant technology, Beta customers can easily put their pre-owned garments and accessories back into circulation. Items can be collected at home or dropped off at a participating Beta boutique. Reusant manages authentication, valuation, photography and listing across a network of 20+ international marketplaces. Customers receive payment by bank transfer or as store credit (with an additional bonus on value). The service is fully active in Italy, France, the United Kingdom, the United States and Singapore.'}
+  ]},
+  { icon:'care', title:'Aftersales & Support', blocks:[
+    { sub:'Use, Maintenance & Care Instructions', rows:[
+      row('Washing','Gentle wash, max 30 °C — wash separately, inside out'),
+      row('Softener','Do not use fabric softener'),
+      row('Bleaching','Do not use chlorine bleach'),
+      row('Drying','Do not tumble dry — delicate spin max 400 rpm — hang dry in the shade'),
+      row('Ironing','Iron inside out, max 120 °C, no steam'),
+      row('Dry Cleaning','Do not dry clean'),
+    ]},
+    { sub:'Service', rows:[
+      row('Certified Service Provider',NA),
+      row('Warranty',NA),
+      row('Service History','Managed via Aftersales Dynamics AX Platform'),
+      row('Health and Safety Information',NA),
+      row('Product Life Cycle Responsibility',NA),
+    ]},
+  ]},
+  { icon:'cert', title:'Regulation, Certification & Documentation', blocks:[
+    { rows:[
+      row('Regulatory Compliance',NA),
+      row('Certifications, Labels and IP','GOTS Cotton'),
+      row('Technical Documentation',NA),
+      row('Record of Ownership History',NA),
+      row('Quality Test Reports','See Product Performances — Samples & Analysis'),
+    ]}
   ]},
 ];
 
@@ -294,17 +459,33 @@ const root = document.getElementById('accordions');
 sections.forEach((s, i) => {
   const acc = document.createElement('div');
   acc.className = 'acc' + (i === 0 ? ' open' : '');
-  const rowsHtml = s.rows.map(([k,v]) => {
-    const na = (v === NA) ? ' na' : '';
-    return `<div class="data-row"><span class="data-key">${k}</span><span class="data-val${na}">${v}</span></div>`;
-  }).join('');
+
+  let inner = '';
+  s.blocks.forEach(b => {
+    inner += '<div class="sub-block">';
+    if (b.sub) inner += `<div class="sub-title">${b.sub}</div>`;
+    if (b.rows) {
+      inner += '<div class="data-grid">' + b.rows.map(r => {
+        const na = (r.v === NA) ? ' na' : '';
+        return `<div class="data-row"><span class="data-key">${r.k}</span><span class="data-val${na}">${r.v}</span></div>`;
+      }).join('') + '</div>';
+    }
+    if (b.tests) {
+      inner += '<div class="sub-block"><div class="sub-title">Samples & Analysis</div><div class="data-grid">' +
+        b.tests.map(t => `<div class="test-row"><span class="test-name">${t[0]}</span><span class="badge ${t[1]}">${t[1] === 'pass' ? 'Pass' : 'Fail'}</span></div>`).join('') +
+        '</div></div>';
+    }
+    if (b.note) inner += `<div class="note-box">${b.note}</div>`;
+    inner += '</div>';
+  });
+
   acc.innerHTML = `
     <div class="acc-head">
       <span class="acc-icon">${ic[s.icon]}</span>
       <span class="acc-title">${s.title}</span>
       <svg class="acc-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </div>
-    <div class="acc-body"><div class="acc-inner"><div class="data-grid">${rowsHtml}</div></div></div>`;
+    <div class="acc-body"><div class="acc-inner">${inner}</div></div>`;
   root.appendChild(acc);
 
   const head = acc.querySelector('.acc-head');
@@ -321,7 +502,6 @@ sections.forEach((s, i) => {
   });
 });
 
-// open first by default
 requestAnimationFrame(() => {
   const first = root.querySelector('.acc.open .acc-body');
   if (first) first.style.maxHeight = first.scrollHeight + 'px';
