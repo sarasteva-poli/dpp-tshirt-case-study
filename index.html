@@ -138,6 +138,19 @@
     color:var(--ink);font-size:14px;font-weight:500;text-align:right;white-space:pre-line;
   }
   .data-val.na{color:var(--muted);font-style:italic;font-weight:400}
+  .gran{
+    display:inline-block;margin-left:10px;padding:2px 10px;border-radius:20px;
+    font-size:10px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;
+    vertical-align:middle;white-space:nowrap;
+  }
+  .gran-item{background:rgba(198,139,139,.16);color:#B5706F;border:1px solid rgba(198,139,139,.35)}
+  .gran-batch{background:rgba(184,155,110,.16);color:#9A7B47;border:1px solid rgba(184,155,110,.4)}
+  .gran-model{background:rgba(127,143,160,.16);color:#5E7186;border:1px solid rgba(127,143,160,.4)}
+  .legend{
+    display:flex;justify-content:center;align-items:center;gap:14px;flex-wrap:wrap;
+    margin-top:18px;font-size:12px;color:var(--muted);
+  }
+  .legend-label{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;font-weight:500}
   .sub-block{
     margin-top:18px;
   }
@@ -238,6 +251,13 @@
       <svg viewBox="0 0 24 24" fill="none" stroke="#C68B8B" stroke-width="2"><path d="M9 12l2 2 4-4M21 12a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round"/></svg>
       Verified Digital Product Passport
     </div>
+
+    <div class="legend">
+      <span class="legend-label">Data granularity:</span>
+      <span><span class="gran gran-item" style="margin-left:0">Item</span> single garment</span>
+      <span><span class="gran gran-batch" style="margin-left:0">Batch</span> production lot</span>
+      <span><span class="gran gran-model" style="margin-left:0">Model</span> product style</span>
+    </div>
   </div>
 </div>
 
@@ -268,15 +288,15 @@ const ic = {
 };
 
 const NA = "Data not available";
-const row = (k,v) => ({k, v});
+const row = (k,v,g) => ({k, v, g}); // g (opzionale) = 'item' | 'batch' | 'model'
 
 // ---- Sections data (from real reworked case data) ----
 const sections = [
   { icon:'id', title:'Product Identification', blocks:[
     { rows:[
-      row('Product Name','Medium Fit T-Shirt'),
-      row('Brand','Beta (Axoria Group)'),
-      row('Sector','RTW (Textile / Apparel)'),
+      row('Product Name','Medium Fit T-Shirt','item'),
+      row('Brand','Beta (Axoria Group)', 'batch'),
+      row('Sector','RTW (Textile / Apparel)', 'model'),
       row('Department','Men\'s Jersey'),
       row('Subdepartment','Tops'),
       row('Class','Crew Short Sleeves'),
@@ -467,7 +487,8 @@ sections.forEach((s, i) => {
     if (b.rows) {
       inner += '<div class="data-grid">' + b.rows.map(r => {
         const na = (r.v === NA) ? ' na' : '';
-        return `<div class="data-row"><span class="data-key">${r.k}</span><span class="data-val${na}">${r.v}</span></div>`;
+        const tag = r.g ? `<span class="gran gran-${r.g}">${r.g}</span>` : '';
+        return `<div class="data-row"><span class="data-key">${r.k}</span><span class="data-val${na}">${r.v}${tag}</span></div>`;
       }).join('') + '</div>';
     }
     if (b.tests) {
