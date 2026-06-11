@@ -272,7 +272,7 @@ const row = (k,v) => ({k, v});
 
 // ---- Sections data (from real reworked case data) ----
 const sections = [
-  { icon:'id', title:'Product Identification Data', blocks:[
+  { icon:'id', title:'Product Identification', blocks:[
     { rows:[
       row('Product Name','Medium Fit T-Shirt'),
       row('Brand','Beta (Axoria Group)'),
@@ -301,7 +301,7 @@ const sections = [
       row('Purchase Order ID','561257'),
     ]}
   ]},
-  { icon:'trace', title:'Supply Chain Traceability', blocks:[
+  { icon:'trace', title:'Supply Chain and Traceability', blocks:[
     { sub:'Tier 1 — Finished Product Supplier', rows:[
       row('Supplier','CO Textil S.A.'),
       row('Location','Portugal'),
@@ -352,7 +352,7 @@ const sections = [
     ]},
   ]},
   { icon:'env', title:'Environmental Sustainability', blocks:[
-    { rows:[
+    { sub:'Indicators present at Group level', rows:[
       row('GHG Emissions (kg CO₂ eq)',NA),
       row('Particulate Matter (kg PM10)',NA),
       row('Photochemical Ozone Formation (kg NMVOC eq)',NA),
