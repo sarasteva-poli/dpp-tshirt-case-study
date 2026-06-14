@@ -146,6 +146,7 @@
   .gran-item{background:rgba(198,139,139,.16);color:#B5706F;border:1px solid rgba(198,139,139,.35)}
   .gran-batch{background:rgba(184,155,110,.16);color:#9A7B47;border:1px solid rgba(184,155,110,.4)}
   .gran-model{background:rgba(127,143,160,.16);color:#5E7186;border:1px solid rgba(127,143,160,.4)}
+  .gran-group{background:rgba(110,84,80,.16);color:#6E5450;border:1px solid rgba(110,84,80,.4)}
   .legend{
     display:flex;justify-content:center;align-items:center;gap:14px;flex-wrap:wrap;
     margin-top:18px;font-size:12px;color:var(--muted);
@@ -301,6 +302,7 @@
       <span><span class="gran gran-item" style="margin-left:0">Item</span> single garment</span>
       <span><span class="gran gran-batch" style="margin-left:0">Batch</span> production lot</span>
       <span><span class="gran gran-model" style="margin-left:0">Model</span> product style</span>
+      <span><span class="gran gran-group" style="margin-left:0">Group</span> corporate aggregate</span>
     </div>
   </div>
 </div>
@@ -455,21 +457,27 @@ const sections = [
     ]},
   ]},
   { icon:'env', title:'Environmental Sustainability', blocks:[
-    { sub:'Indicators present at Group level', rows:[
-      row('GHG Emissions (kg CO₂ eq)',NA),
-      row('Particulate Matter (kg PM10)',NA),
+    { sub:'Impact indicators — available at Group level only', rows:[
+      row('GHG Emissions (kg CO₂ eq)','Group level only','group'),
+      row('Particulate Matter (kg PM10)','Group level — not isolated','group'),
       row('Photochemical Ozone Formation (kg NMVOC eq)',NA),
-      row('Acidification Potential (kg SO₂ eq)',NA),
+      row('Acidification Potential (kg SO₂ eq)','Group level — not isolated','group'),
       row('Ozone Depletion (kg CFC-11 eq)',NA),
-      row('Eutrophication — Terrestrial (kg N eq)',NA),
-      row('Eutrophication — Freshwater (kg P eq)',NA),
-      row('Energy Consumption — Total (MJ)',NA),
-      row('Energy Consumption — Fossil (MJ)',NA),
-      row('Water Footprint (m³)',NA),
-      row('Land Use (kg)',NA),
-      row('Hazardous Substances and SVHC',NA),
-      row('Waste (kg or m³)','N/A'),
-    ]}
+      row('Eutrophication — Terrestrial (kg N eq)','Group level — not isolated','group'),
+      row('Eutrophication — Freshwater (kg P eq)','Group level — not isolated','group'),
+      row('Energy Consumption — Total (MJ)','Group level only','group'),
+      row('Energy Consumption — Fossil (MJ)','Group level only','group'),
+      row('Water Footprint (m³)','Group level only','group'),
+      row('Land Use (m²·year)','Group level only','group'),
+      row('Hazardous Substances and SVHC','Group level only','group'),
+      row('Waste (kg or m³)','Group level only','group'),
+    ]},
+    { sub:'Product-level footprint required by the ESPR Textile DPP', rows:[
+      row('Product Carbon Footprint — class of performance',NA,'item'),
+      row('Product Environmental Footprint — single-score class',NA,'item'),
+      row('Substances of Concern (SoC) — ESPR Art. 7(5)',NA,'item'),
+    ]},
+    { note:'<strong>Why the product-level fields are empty.</strong> These environmental indicators are computed at corporate (Group) level through a natural-capital life-cycle model aggregated across the whole value chain, and are not disaggregated to the item, batch or model granularity the DPP requires. Two midpoints — ozone depletion and photochemical ozone formation — are not reported even at Group level; three — particulate matter, acidification and eutrophication — exist only as factors embedded in the Group model, without standalone disclosure. What the ESPR Textile Delegated Act actually mandates is a product-level carbon-footprint class and a PEF single-score class of performance, neither of which is currently generated for the individual product.'}
   ]},
   { icon:'social', title:'Social Sustainability', blocks:[
     { sub:'Human Rights & Ethical Practices', rows:[
