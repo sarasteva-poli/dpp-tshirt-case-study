@@ -549,13 +549,22 @@ const sections = [
     { note:'<strong>Collected by the Group, outside the current DPP scope.</strong> The majority of these social topics are addressed in the Group\'s corporate reporting, but at organisational and supplier level and largely in narrative/policy form rather than as product-level metrics. The ESPR Textile DPP defines no product-level social information requirement: the JRC preparatory study treats social due diligence (CSDDD) as a company-level matter, with disclosure channelled through corporate reporting (CSRD/ESRS) and the European Single Access Point. These indicators are shown to document that the data already exist within the Group and could feed product-linked social disclosure in the future, should the DPP, CSDDD and CSRD converge — conditional on the information systems disaggregating them to product level. Presented as Group-level context only, not as product attributes or compliance claims.'}
   ]},
   { icon:'perf', title:'Product Performances', blocks:[
-    { rows:[
-      row('Durability — Expected Lifetime (cycles / years)',NA),
-      row('Dimensional Stability — Dimensional Variation (%)',NA),
-      row('Surface Durability — Pilling (scale 1–5)',NA),
-      row('Surface Durability — Colour Change (scale 1–5)',NA),
-      row('Mechanical Properties — Tensile Strength (MPa)',NA),
-    ], tests:[
+    { sub:'Performance metrics', rows:[
+      row('Durability — Expected Lifetime (cycles / years)',NA,'model'),
+      row('Dimensional Stability — Dimensional Variation (%)',NA,'model'),
+      row('Surface Durability — Pilling (scale 1–5)',NA,'model'),
+      row('Surface Durability — Colour Change (scale 1–5)',NA,'model'),
+      row('Mechanical Properties — Tensile Strength (MPa)',NA,'model'),
+    ]},
+    { sub:'Performance & circularity scope of the ESPR Textile DPP', rows:[
+      row('Durability / Expected Lifetime','ESPR Annex I — circularity parameter'),
+      row('Reparability / Reusability','ESPR Annex I — circularity parameter'),
+      row('Commercial durability guarantee (> 2 yr)','Disclosed via harmonised label, if offered'),
+      row('Fibre Composition','Mandatory — Textile Labelling Reg. (Art. 9)','model'),
+      row('Mechanical / chemical information','DPP product-characteristics category'),
+      row('Substances of Concern (RSL / REACH)','Evidenced by the lab tests below'),
+    ]},
+    { tests:[
       ['Textiles — Free & Hydrolysed Formaldehyde (Water Extraction Test)','pass'],
       ['Determination of pH of Aqueous Extract','pass'],
       ['Textiles — Determination of Odor (Olfactory Method)','pass'],
@@ -568,7 +577,8 @@ const sections = [
       ['Colour Fastness to Rubbing (2nd sample)','pass'],
       ['Colour Fastness to Perspiration (2nd sample)','pass'],
       ['Textiles — Fibers Quantitative Composition (2nd sample)','fail'],
-    ]}
+    ]},
+    { note:'<strong>What the DPP actually requires here.</strong> Of these parameters, durability and expected lifetime are ESPR Annex I circularity parameters, and fibre composition is a mandatory disclosure under the Textile Labelling Regulation (Art. 9). The dimensional-stability, surface-durability and chemical/colour-fastness tests are fitness-for-use and product-safety checks that feed the substances-of-concern and certification layers rather than standalone DPP performance data. Note that the fibre-composition test fails on the second sample — a failed verification on a mandatory data point, which the passport would propagate downstream. Fabric-resistance data of this kind could be provided directly by the fabric mill (Tier 2) but is not currently requested; the firm\'s move toward centralised supplier data is the natural place to add such a field.'}
   ]},
   { icon:'loop', title:'Circularity & End-of-Life', blocks:[
     { sub:'Circularity Metrics', rows:[
