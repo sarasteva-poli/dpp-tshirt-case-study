@@ -147,6 +147,23 @@
   .gran-batch{background:rgba(184,155,110,.16);color:#9A7B47;border:1px solid rgba(184,155,110,.4)}
   .gran-model{background:rgba(127,143,160,.16);color:#5E7186;border:1px solid rgba(127,143,160,.4)}
   .gran-group{background:rgba(110,84,80,.16);color:#6E5450;border:1px solid rgba(110,84,80,.4)}
+
+  /*aggiunto ora*/
+  .gran-req{background:transparent !important}
+  .gran-batchmodel{background:rgba(151,126,120,.10);color:#7d6a65;border:1px solid rgba(151,126,120,.4)}
+  .gran-cols{display:flex;justify-content:flex-end;gap:6px;margin-top:14px;margin-bottom:2px}
+  .gran-col-label{
+    width:86px;text-align:center;font-size:9px;letter-spacing:1px;
+    text-transform:uppercase;color:var(--muted);font-weight:600;flex-shrink:0;
+  }
+  .gran-slot{display:inline-block;width:86px;text-align:center;flex-shrink:0}
+  .gran-slot .gran{margin-left:0}
+  .gran-slot .nodata{color:var(--line);font-size:12px}
+  @media(max-width:560px){
+    .gran-cols{justify-content:flex-start}
+    .gran-slot{width:auto;min-width:70px;text-align:left}
+  }
+  
   .legend{
     display:flex;justify-content:center;align-items:center;gap:14px;flex-wrap:wrap;
     margin-top:18px;font-size:12px;color:var(--muted);
@@ -334,7 +351,7 @@ const ic = {
 };
 
 const NA = "Data not available";
-const row = (k,v,g) => ({k, v, g}); // g (opzionale) = 'item' | 'batch' | 'model'
+const row = (k,v,g,rq) => ({k, v, g, rq}); // g = actual, rq = required: 'item'|'batch'|'model'|'group'|'batch/model'
 const arrowLeft = '<div class="chain-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M11 6l-6 6 6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>';
 
 const chainHTML = `
@@ -393,30 +410,30 @@ const sections = [
       row('Subdepartment','Tops','model'),
       row('Class','Crew Short Sleeves','model'),
       row('Subclass','Casual','model'),
-      row('Model (Model ID)','654321','model'),
+      row('Model (Model ID)','654321','model', 'model'),
       row('Article Number','654321UVZ879374','model'),
       row('SKU','813986202','model'),
-      row('EAN (Unique Product Identifier)','4666620689653','model'),
+      row('EAN (Unique Product Identifier)','4666620689653','model', 'item'),
       row('Product Colour','Faded Washed Black/W (9374)','model'),
       row('Reference Size','S (IT 36)','model'),
-      row('Product Weight','0.300 kg','model'),
+      row('Product Weight','0.300 kg','model', 'model'),
       row('Product Dimensions','76 cm × (59 + 25.5×2) cm','model'),
-      row('Purchase Order (Batch ID)','JP2609521231A','batch'),
-      row('Product ESPR category','data present but to be identified as knitted/woven/high denim product','model'),
-      row('Product PEFCR category','PEFCR for apparel','model'),
+      row('Purchase Order (Batch ID)','JP2609521231A','batch', 'batch'),
+      row('Product ESPR category','data present but to be identified as knitted/woven/high denim product','model', 'model'),
+      row('Product PEFCR category','PEFCR for apparel','model', 'model'),
     ]}
   ]},
   { icon:'factory', title:'Manufacturing Information', blocks:[
     { rows:[
-      row('Manufacturer Name','CO Textil S.A.','batch'),
+      row('Manufacturer Name','CO Textil S.A.','batch', 'batch'),
       row('Manufacturing Location','Portugal','batch'),
-      row('Manufacturer Address',NA,'batch'),
+      row('Manufacturer Address',NA,'batch', 'batch'),
       row('Manufacturing Process','Manufacturing','batch'),
       row('Manufacturing Date','05/12/2025','batch'),
-      row('Manufacturer Unique Operator Identifier (DUNS)','577037746','batch'),
-      row('Unique Facility Identifier (ZDHC ID)','A244ZW24','batch'),
+      row('Manufacturer Unique Operator Identifier (DUNS)','577037746','batch', 'batch'),
+      row('Unique Facility Identifier (ZDHC ID)','A244ZW24','batch', 'batch'),
       row('Purchase Order ID','561257','batch'),
-      row('Manufacturer contact information',NA,'batch'),
+      row('Manufacturer contact information',NA,'batch', 'batch'),
     ]}
   ]},
   { icon:'trace', title:'Supply Chain and Traceability', blocks:[
@@ -433,11 +450,11 @@ const sections = [
   ]},
   { icon:'material', title:'Product Composition', blocks:[
     { sub:'Main Materials', rows:[
-      row('Fabric 1 — Main Material (Jersey)','100% Cotton (Organic GOTS)', 'model'),
+      row('Fabric 1 — Main Material (Jersey)','100% Cotton (Organic GOTS)', 'model', 'model'),
       row('Quantity of Fabric Used','0.1 m','model'),
-      row('Fabric 2','100% Polyester','model'),
-      row('Rib (collar)','CO/EA Dry Jersey','model'),
-      row('Embroidery Yarn','99% Cotton, 1% Elastane','model'),
+      row('Fabric 2','100% Polyester','model', 'model'),
+      row('Rib (collar)','CO/EA Dry Jersey','model', 'model'),
+      row('Embroidery Yarn','99% Cotton, 1% Elastane','model', 'model'),
     ]},
     { sub:'Details & Treatments', rows:[
       row('Embroidery — Front','Beta back embro, small @ center front from collar (8 cm)','model'),
@@ -469,13 +486,13 @@ const sections = [
       row('Energy Consumption — Fossil (MJ)','Group level only','group'),
       row('Water Footprint (m³)','Group level only','group'),
       row('Land Use (m²·year)','Group level only','group'),
-      row('Hazardous Substances and SVHC','Group level only','group'),
+      row('Hazardous Substances and SVHC','Group level only','group', 'batch'),
       row('Waste (kg or m³)',NA),
     ]},
     { sub:'Product-level footprint required by the ESPR Textile DPP', rows:[
-      row('Product Carbon Footprint — class of performance',NA,'model'),
-      row('Product Environmental Footprint — single-score class',NA,'model'),
-      row('Substances of Concern (SoC) — ESPR',NA,'batch'),
+      row('Product Carbon Footprint — class of performance',NA,'model', 'model'),
+      row('Product Environmental Footprint — single-score class',NA,'model', 'model'),
+      row('Substances of Concern (SoC) — ESPR',NA,'batch', 'batch'),
     ]},
     { note:'<strong>Why the product-level fields are empty.</strong> These environmental indicators are computed at corporate (Group) level through a natural-capital life-cycle model aggregated across the whole value chain, and are not disaggregated to the item, batch or model granularity the DPP requires. Ozone Depletion and Photochemical Ozone Formation are not reported even at Group level; Particulate Matter, Acidification and Eutrophication exist only as factors embedded in the Group model, without standalone disclosure. What the ESPR Textile Delegated Act actually mandates is a product-level carbon-footprint class and a PEF single-score class of performance, neither of which is currently generated for the individual product.'}
   ]},
@@ -550,17 +567,17 @@ const sections = [
   ]},
   { icon:'perf', title:'Product Performances', blocks:[
     { sub:'Performance metrics', rows:[
-      row('Durability — Expected Lifetime (cycles / years)',NA),
-      row('Dimensional Stability — Dimensional Variation (%)',NA),
-      row('Surface Durability — Pilling (scale 1–5)',NA),
-      row('Surface Durability — Colour Change (scale 1–5)',NA),
-      row('Mechanical Properties — Tensile Strength (MPa)',NA),
+      row('Durability — Expected Lifetime (cycles / years)',NA, undefined, 'batch/model'),
+      row('Dimensional Stability — Dimensional Variation (%)',NA, undefined, 'batch/model'),
+      row('Surface Durability — Pilling (scale 1–5)',NA, undefined, 'batch/model'),
+      row('Surface Durability — Colour Change (scale 1–5)',NA, undefined, 'batch/model'),
+      row('Mechanical Properties — Tensile Strength (MPa)',NA, undefined, 'batch/model'),
     ]},
     { sub:'Performance & circularity scope of the ESPR Textile DPP', rows:[
       row('Durability / Expected Lifetime','ESPR Annex I — circularity parameter'),
       row('Reparability / Reusability','ESPR Annex I — circularity parameter'),
       row('Commercial durability guarantee (> 2 yr)','Disclosed via harmonised label, if offered'),
-      row('Fibre Composition','Mandatory — Textile Labelling Reg. (Art. 9)','model'),
+      row('Fibre Composition','Mandatory — Textile Labelling Reg. (Art. 9)','model', 'model'),
       row('Mechanical / chemical information','DPP product-characteristics category'),
       row('Substances of Concern (RSL / REACH)','Evidenced by the lab tests below'),
     ]},
@@ -582,28 +599,28 @@ const sections = [
   ]},
   { icon:'loop', title:'Circularity & End-of-Life', blocks:[
     { sub:'Circularity Metrics', rows:[
-      row('Recycled Input (%)','N/A'),
-      row('Recyclability (%)','N/A'),
+      row('Recycled Input (%)','N/A', undefined,'model'),
+      row('Recyclability (%)','N/A', undefined,'model'),
       row('Recycling Rate (%)','N/A'),
     ]},
     { sub:'R-Strategies', rows:[
       row('Reuse','Available via Reusant'),
-      row('Repair',NA),
+      row('Repair',NA, undefined,'model'),
       row('Remanufacture',NA),
       row('Recycle','Available via Reusant'),
-      row('Disassembly Instructions',NA),
+      row('Disassembly Instructions',NA, undefined,'model'),
       row('Collection Points','Available via Reusant'),
       row('End-of-Life Pathways','Available via Reusant'),
     ], note:'<strong>Beta Re-sell Program (powered by Reusant).</strong> Through Reusant technology, Beta customers can easily put their pre-owned garments and accessories back into circulation. Items can be collected at home or dropped off at a participating Beta boutique. Reusant manages authentication, valuation, photography and listing across a network of 20+ international marketplaces. Customers receive payment by bank transfer or as store credit (with an additional bonus on value). The service is fully active in Italy, France, the United Kingdom, the United States and Singapore.'}
   ]},
   { icon:'care', title:'Aftersales & Support', blocks:[
     { sub:'Use, Maintenance & Care Instructions', rows:[
-      row('Washing','Gentle wash, max 30 °C — wash separately, inside out'),
-      row('Softener','Do not use fabric softener'),
-      row('Bleaching','Do not use chlorine bleach'),
-      row('Drying','Do not tumble dry — delicate spin max 400 rpm — hang dry in the shade'),
-      row('Ironing','Iron inside out, max 120 °C, no steam'),
-      row('Dry Cleaning','Do not dry clean'),
+      row('Washing','Gentle wash, max 30 °C — wash separately, inside out', 'model','model'),
+      row('Softener','Do not use fabric softener', 'model','model'),
+      row('Bleaching','Do not use chlorine bleach', 'model','model'),
+      row('Drying','Do not tumble dry — delicate spin max 400 rpm — hang dry in the shade', 'model','model'),
+      row('Ironing','Iron inside out, max 120 °C, no steam', 'model','model'),
+      row('Dry Cleaning','Do not dry clean', 'model','model'),
     ]},
     { sub:'Service', rows:[
       row('Certified Service Provider',NA),
@@ -616,7 +633,7 @@ const sections = [
   { icon:'cert', title:'Regulation, Certification & Documentation', blocks:[
     { rows:[
       row('Regulatory Compliance',NA),
-      row('Certifications, Labels and IP','GOTS Cotton'),
+      row('Certifications, Labels and IP','GOTS Cotton', undefined,'model'),
       row('Technical Documentation',NA),
       row('Record of Ownership History',NA),
       row('Quality Test Reports','See Product Performances — Samples & Analysis'),
@@ -635,10 +652,17 @@ sections.forEach((s, i) => {
     inner += '<div class="sub-block">';
     if (b.sub) inner += `<div class="sub-title">${b.sub}</div>`;
     if (b.rows) {
+      const hasTags = b.rows.some(r => r.g || r.rq);
+      if (hasTags) inner += `<div class="gran-cols"><span class="gran-col-label">Actual granularity</span><span class="gran-col-label">Required granularity</span></div>`;
       inner += '<div class="data-grid">' + b.rows.map(r => {
         const na = (r.v === NA) ? ' na' : '';
-        const tag = r.g ? `<span class="gran gran-${r.g}">${r.g}</span>` : '';
-        return `<div class="data-row"><span class="data-key">${r.k}</span><span class="data-val${na}">${r.v}${tag}</span></div>`;
+        const mk = (val, extra) => val
+          ? `<span class="gran ${extra} gran-${val.replace(/[^a-z]/gi,'')}">${val}</span>`
+          : `<span class="nodata">—</span>`;
+        const slots = hasTags
+          ? `<span class="gran-slot">${mk(r.g,'')}</span><span class="gran-slot">${mk(r.rq,'gran-req')}</span>`
+          : '';
+        return `<div class="data-row"><span class="data-key">${r.k}</span><span class="data-val${na}">${r.v}</span>${slots}</div>`;
       }).join('') + '</div>';
     }
     if (b.tests) {
