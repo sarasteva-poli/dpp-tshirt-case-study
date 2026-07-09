@@ -440,8 +440,8 @@ const sections = [
   { icon:'trace', title:'Supply Chain and Traceability', blocks:[
     { sub:'Supply Chain Flow', html: chainHTML },
     { sub:'Product Tracking & Transport', rows:[
-      row('Forward (Tiers -> Warehouse -> Stores)',NA,'batch'),
-      row('Backward / Aftersales (Stores -> Warehouse -> Outlets/Second hand)',NA,'batch'),
+      row('Forward (Tiers -> Warehouse -> Stores)',NA, unavailable, 'batch'),
+      row('Backward / Aftersales (Stores -> Warehouse -> Outlets/Second hand)',NA,unavailable, 'batch'),
     ]},
    { sub:'Supply Chain Map', html:`
       <div class="map-block">
