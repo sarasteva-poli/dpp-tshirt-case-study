@@ -117,6 +117,21 @@
     flex:1;font-family:'Cormorant Garamond',serif;
     font-size:22px;font-weight:600;color:var(--ink);
   }
+  
+  .ready{
+    flex-shrink:0;display:inline-block;padding:3px 11px;border-radius:20px;
+    font-size:9.5px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;
+    white-space:nowrap;
+  }
+  .ready-vhigh{background:rgba(122,158,126,.18);color:#5E8A63;border:1px solid rgba(122,158,126,.45)}
+  .ready-high{background:rgba(154,178,140,.16);color:#748C60;border:1px solid rgba(154,178,140,.45)}
+  .ready-med{background:rgba(184,155,110,.16);color:#9A7B47;border:1px solid rgba(184,155,110,.45)}
+  .ready-low{background:rgba(205,141,100,.16);color:#B0714A;border:1px solid rgba(205,141,100,.45)}
+  .ready-vlow{background:rgba(192,112,106,.16);color:#B05F58;border:1px solid rgba(192,112,106,.45)}
+  .ready-gap{background:rgba(110,84,80,.14);color:#6E5450;border:1px solid rgba(110,84,80,.4)}
+  @media(max-width:560px){
+    .ready{font-size:8px;padding:2px 7px;letter-spacing:.8px}
+  }
   .acc-arrow{
     flex-shrink:0;width:22px;height:22px;color:var(--muted);
     transition:transform .35s ease;
@@ -404,7 +419,7 @@ const chainHTML = `
   
 // ---- Sections data (from real reworked case data) ----
 const sections = [
-  { icon:'id', title:'Product Identification', blocks:[
+  { icon:'id', title:'Product Identification', ready:['vhigh','Very high readiness · G1'], blocks:[
     { rows:[
       row('Product Name','Medium Fit T-Shirt','model'),
       row('Brand','Beta (Axoria Group)', 'model'),
@@ -426,7 +441,7 @@ const sections = [
       row('Product PEFCR category','PEFCR for apparel','model', 'model'),
     ]}
   ]},
-  { icon:'factory', title:'Manufacturing Information', blocks:[
+  { icon:'factory', title:'Manufacturing Information', ready:['vhigh','Very high readiness · G1'], blocks:[
     { rows:[
       row('Manufacturer Name','CO Textil S.A.','batch', 'batch'),
       row('Manufacturing Location','Portugal','batch'),
@@ -439,7 +454,7 @@ const sections = [
       row('Manufacturer contact information', 'contact@cotextil.com','batch', 'batch'),
     ]}
   ]},
-  { icon:'trace', title:'Supply Chain and Traceability', blocks:[
+  { icon:'trace', title:'Supply Chain and Traceability', ready:['high','High readiness · G1–2'], blocks:[
     { sub:'Supply Chain Flow', html: chainHTML },
     { sub:'Product Tracking & Transport', rows:[
       row('Forward (Tiers -> Warehouse -> Stores)',NA, undefined, 'batch'),
@@ -451,7 +466,7 @@ const sections = [
         <div class="map-caption">Geographical flow of the product's supply chain, from raw material origin to finished product.</div>
       </div>` },
   ]},
-  { icon:'material', title:'Product Composition', blocks:[
+  { icon:'material', title:'Product Composition', ready:['high','High readiness · G1–2'], blocks:[
     { sub:'Main Materials', rows:[
       row('Fabric 1 — Main Material (Jersey)','100% Cotton (Organic GOTS)', 'item', 'model'),
       row('Quantity of Fabric Used','0.1 m','item'),
@@ -479,7 +494,7 @@ const sections = [
           row('Certifications, Labels and IP','GOTS Cotton', 'model','model'),
     ]},
   ]},
-  { icon:'env', title:'Environmental Sustainability', blocks:[
+  { icon:'env', title:'Environmental Sustainability', ready:['vlow','Very low readiness · G4'], blocks:[
     { sub:'Impact indicators — available at Group level only', rows:[
       row('GHG Emissions (kg CO₂ eq)','Group level only','group', 'batch/model'),
       row('Particulate Matter (kg PM10)','Group level only','group', 'batch/model'),
@@ -501,7 +516,7 @@ const sections = [
       row('Substances of Concern (SoC) — ESPR',NA, undefined, 'batch'),
     ]},
   ]},
-  { icon:'social', title:'Social Sustainability', blocks:[
+  { icon:'social', title:'Social Sustainability', ready:['gap','Regulatory gap · G5'], blocks:[
     { sub:'reported = disclosed in Group reporting · audit only = held by Group audit, not separately disclosed', rows:[] },
     { sub:'Product-level social indicators', rows:[
       row('Traceability & Transparency','Group level — reported','group'),
@@ -569,7 +584,7 @@ const sections = [
       row('Workforce & value-chain reporting','CSRD / ESRS S1–S4 — company level','group'),
     ]},
   ]},
-  { icon:'perf', title:'Product Performances', blocks:[
+  { icon:'perf', title:'Product Performances', ready:['med','Medium readiness · G2'], blocks:[
     { sub:'Performance metrics', rows:[
       row('Durability — Expected Lifetime (cycles / years)',NA, undefined, 'batch/model'),
       row('Reparability / Reusability',NA, undefined, 'batch/model'),
@@ -598,7 +613,7 @@ const sections = [
       ['Textiles — Fibers Quantitative Composition (2nd sample)','fail'],
     ]},
 ]},
-  { icon:'loop', title:'Circularity & End-of-Life', blocks:[
+  { icon:'loop', title:'Circularity & End-of-Life', ready:['low','Low readiness · G3–4'], blocks:[
     { sub:'Circularity Metrics', rows:[
       row('Recycled Input (%)',NA, undefined,'model'),
       row('Recyclability (%)',NA, undefined,'model'),
@@ -614,7 +629,7 @@ const sections = [
       row('End-of-Life Pathways','Available via Reusant'),
     ]}
   ]},
-  { icon:'care', title:'Aftersales & Support', blocks:[
+  { icon:'care', title:'Aftersales & Support', ready:['med','Medium readiness · G2–3'], blocks:[
     { sub:'Use, Maintenance & Care Instructions', rows:[
       row('Washing','Gentle wash, max 30 °C — wash separately, inside out', 'model','model'),
       row('Softener','Do not use fabric softener', 'model','model'),
@@ -667,10 +682,12 @@ sections.forEach((s, i) => {
     inner += '</div>';
   });
 
+const readyBadge = s.ready ? `<span class="ready ready-${s.ready[0]}">${s.ready[1]}</span>` : '';
   acc.innerHTML = `
     <div class="acc-head">
       <span class="acc-icon">${ic[s.icon]}</span>
       <span class="acc-title">${s.title}</span>
+      ${readyBadge}
       <svg class="acc-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </div>
     <div class="acc-body"><div class="acc-inner">${inner}</div></div>`;
