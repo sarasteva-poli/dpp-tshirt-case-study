@@ -572,19 +572,17 @@ const sections = [
   { icon:'perf', title:'Product Performances', blocks:[
     { sub:'Performance metrics', rows:[
       row('Durability — Expected Lifetime (cycles / years)',NA, undefined, 'batch/model'),
-      row('Dimensional Stability — Dimensional Variation (%)',NA, undefined, 'batch/model'),
-      row('Surface Durability — Pilling (scale 1–5)',NA, undefined, 'batch/model'),
-      row('Surface Durability — Colour Change (scale 1–5)',NA, undefined, 'batch/model'),
-      row('Mechanical Properties — Tensile Strength (MPa)',NA, undefined, 'batch/model'),
-    ]},
-    { sub:'Performance & circularity scope of the ESPR Textile DPP', rows:[
-      row('Durability / Expected Lifetime', NA),
-      row('Reparability / Reusability',NA),
-      row('Commercial durability guarantee (> 2 yr)',NA),
+      row('Reparability / Reusability',NA, undefined, 'batch/model'),
+      row('Commercial durability guarantee (> 2 yr)',NA, undefined, 'batch/model'),
+      row('Dimensional Stability — Dimensional Variation (%)',NA, undefined),
+      row('Surface Durability — Pilling (scale 1–5)',NA, undefined),
+      row('Surface Durability — Colour Change (scale 1–5)',NA, undefined),
+      row('Mechanical Properties — Tensile Strength (MPa)',NA, undefined),
       row('Fiber Composition','see Product Composition','item', 'model'),
-      row('Mechanical / chemical information','see Product Composition','item'),
+      row('Mechanical / chemical information','see Product Composition','item', 'batch/model'),
       row('Substances of Concern (RSL / REACH)','Evidenced by the lab tests below'),
     ]},
+    
     { tests:[
       ['Textiles — Free & Hydrolysed Formaldehyde (Water Extraction Test)','pass'],
       ['Determination of pH of Aqueous Extract','pass'],
@@ -599,13 +597,12 @@ const sections = [
       ['Colour Fastness to Perspiration (2nd sample)','pass'],
       ['Textiles — Fibers Quantitative Composition (2nd sample)','fail'],
     ]},
-    { note:'<strong>What the DPP actually requires here.</strong> Of these parameters, durability and expected lifetime are ESPR Annex I circularity parameters, and fibre composition is a mandatory disclosure under the Textile Labelling Regulation (Art. 9). The dimensional-stability, surface-durability and chemical/colour-fastness tests are fitness-for-use and product-safety checks that feed the substances-of-concern and certification layers rather than standalone DPP performance data. Note that the fibre-composition test fails on the second sample — a failed verification on a mandatory data point, which the passport would propagate downstream. Fabric-resistance data of this kind could be provided directly by the fabric mill (Tier 2) but is not currently requested; the firm\'s move toward centralised supplier data is the natural place to add such a field.'}
-  ]},
+]},
   { icon:'loop', title:'Circularity & End-of-Life', blocks:[
     { sub:'Circularity Metrics', rows:[
-      row('Recycled Input (%)','N/A', undefined,'model'),
-      row('Recyclability (%)','N/A', undefined,'model'),
-      row('Recycling Rate (%)','N/A'),
+      row('Recycled Input (%)',NA, undefined,'model'),
+      row('Recyclability (%)',NA, undefined,'model'),
+      row('Recycling Rate (%)',NA),
     ]},
     { sub:'R-Strategies', rows:[
       row('Reuse','Available via Reusant'),
@@ -615,7 +612,7 @@ const sections = [
       row('Disassembly Instructions',NA, undefined,'model'),
       row('Collection Points','Available via Reusant'),
       row('End-of-Life Pathways','Available via Reusant'),
-    ], note:'<strong>Beta Re-sell Program (powered by Reusant).</strong> Through Reusant technology, Beta customers can easily put their pre-owned garments and accessories back into circulation. Items can be collected at home or dropped off at a participating Beta boutique. Reusant manages authentication, valuation, photography and listing across a network of 20+ international marketplaces. Customers receive payment by bank transfer or as store credit (with an additional bonus on value). The service is fully active in Italy, France, the United Kingdom, the United States and Singapore.'}
+    ]}
   ]},
   { icon:'care', title:'Aftersales & Support', blocks:[
     { sub:'Use, Maintenance & Care Instructions', rows:[
